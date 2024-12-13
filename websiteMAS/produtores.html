@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoçaRIA - Marketplace de Doçaria Tradicional</title>
+    <link rel="icon" href="images/logo DoçaRIA.jpg" type="image/icon type">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" >
+    <!--Remote links-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Commissioner';
+            padding-top: 50px;
+        }
+
+        .navbar .nav-link,
+        .navbar-brand,
+        .btn-primary {
+            color: white !important; /* Torna o texto branco */
+        }
+        .navbar-main {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #EF2A39; /* Fundo transparente */
+            color: white; /* Texto branco */
+            font-size: 1rem;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Suavidade */
+            z-index: 1000;
+        }
+        .product-card img {
+            height: 150px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-main">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo DoçaRIA.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+                DoçaRIA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Página Inicial</a></li>
+                    <li class="nav-item"><a class="nav-link" href="produtos.html"><i class="fa fa-birthday-cake" aria-hidden="true"></i> Produtos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="produtores.html"><i class="fa fa-user" aria-hidden="true"></i> Produtores</a></li>
+                </ul>
+                <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item" id="loginLI"><a href="login.html" class="btn nav-link" style="background-color: #ff6b35;"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Login </a></li>
+                    <li class="nav-item d-none text-center" id="userMenu">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <section id="produtos" class="container my-4">
+            <h2 class="fw-bold mb-4" style="font-family: 'Pacifico';">Produtores em Destaque</h2>
+            <hr>
+            <div class="row" id="produtores-list">
+                <!-- Produtos serão adicionados dinamicamente -->
+            </div>
+        </section>
+    </div>
+    <nav class="navbar bg-body-tertiary border-top fixed-bottom" style="background-color: #EF2A39;">
+        <div class="container small">
+            <div class="navbar-text" style="color: white;">&copy;  DoçaRIA - MAS 2024/25</div>
+            <div class="navbar-text" style="color: white;">Made with <i class="fa fa-heart" aria-hidden="true"></i> by Grupo 2 - P3</div>
+            <div class="navbar-nav">
+                <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+            </div>
+        </div>
+    </nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="produtores.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoçaRIA - Marketplace de Doçaria Tradicional</title>
+    <link rel="icon" href="images/logo DoçaRIA.jpg" type="image/icon type">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap">
+    <!--Remote links-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: "Commissioner";
+            background-color: #f8e4d4;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-main">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo DoçaRIA.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+                DoçaRIA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Página Inicial</a></li>
+                    <li class="nav-item"><a class="nav-link" href="produtos.html"><i class="fa fa-birthday-cake" aria-hidden="true"></i> Produtos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="produtores.html"><i class="fa fa-user" aria-hidden="true"></i> Produtores</a></li>
+                </ul>
+                <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item" id="loginLI"><a href="login.html" class="btn nav-link" style="background-color: #ff6b35;"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Login </a></li>
+                    <li class="nav-item d-none text-center" id="userMenu">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero pacifico-regular">
+        <label style="font-size: 3.5rem;">Bem-vindo à DoçaRIA</label>
+        <p style="font-size: 2rem;">Explora o melhor que Aveiro tem para oferecer!</p>
+    </div>
+    <div class="mt-5 teste" style="background-color: #f8e4d4;">
+        <div class="container">
+            <div class="row">
+                <h2 style="font-weight: bold; color: #ff6b35;">Quem Somos?</h2>
+                <div class="col-8 mt-4">
+                    <p>
+                        Na DoçaRIA, celebramos a doçaria tradicional de Aveiro enquanto apoiamos produtores locais. Somos apaixonados por sabores autênticos, histórias familiares e a rica herança culinária da nossa região.
+                    </p>
+                    <p>
+                        O nosso objetivo é oferecer uma experiência única, conectando quem aprecia doces típicos a pequenos produtores que mantêm vivas as tradições artesanais. Cada produto que encontra na DoçaRIA é cuidadosamente selecionado para garantir qualidade, sustentabilidade e autenticidade.
+                    </p>
+                    <p>
+                        Mais do que uma loja, somos um espaço de partilha e descoberta, onde a tradição encontra a modernidade para adoçar a sua vida. Venha conhecer e saborear Aveiro connosco!
+                    </p>
+                </div>
+                <div class="col-4">
+                    <img src="images/logo DoçaRIA.png" alt="" height="300" width="350" style="border: 2px solid gray;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="vantagens" style="background-color: #f8e4d4;">
+            <h2 style="text-align: center; color: #ff6b35; font-weight: bold;">O que oferecemos?</h2>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="vantagem-card">
+                    <img src="images/star.png" alt="Icone 1" />
+                    <h3>Qualidade Artesanal</h3>
+                    <p>Produtos feitos à mão com receitas tradicionais que preservam o sabor autêntico de Aveiro.</p>
+                    <a href="#">Saiba mais</a>
+                </div>
+                <div class="vantagem-card">
+                    <img src="images/pin.png" alt="Icone 2" />
+                    <h3>Apoio Local</h3>
+                    <p>Ao escolher a DoçaRIA, você está a apoiar pequenos produtores e negócios da região.</p>
+                    <a href="#">Saiba mais</a>
+                </div>
+                <div class="vantagem-card">
+                    <img src="images/reci.png" alt="Icone 3" />
+                    <h3>Sustentabilidade</h3>
+                    <p>Compromisso com práticas sustentáveis que respeitam o meio ambiente e a comunidade.</p>
+                    <a href="#">Saiba mais</a>
+                </div>
+                <div class="vantagem-card">
+                    <img src="images/package.png" alt="Icone 4" />
+                    <h3>Entrega em Todo o País</h3>
+                    <p>Desfrute dos sabores de Aveiro no conforto da sua casa, com entregas rápidas e seguras.</p>
+                    <a href="#">Saiba mais</a>
+                </div>
+            </div>  
+        </div>
+    </div>
+    <nav class="navbar bg-body-tertiary border-top" style="background-color: #EF2A39;">
+        <div class="container small">
+            <div class="navbar-text" style="color: white;">&copy;  DoçaRIA - MAS 2024/25</div>
+            <div class="navbar-text" style="color: white;">Made with <i class="fa fa-heart" aria-hidden="true"></i> by Grupo 2 - P3</div>
+            <div class="navbar-nav">
+                <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="naogostodisto.js"></script>
+</body>
+</html>
