@@ -18,21 +18,22 @@
         body {
             font-family: 'Commissioner';
             padding-top: 50px;
+            background-color: #F5F5F5;
         }
 
         .navbar .nav-link,
         .navbar-brand,
         .btn-primary {
-            color: white !important; /* Torna o texto branco */
+            color: white !important;
         }
         .navbar-main {
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: #EF2A39; /* Fundo transparente */
-            color: white; /* Texto branco */
+            background-color: #d42e2e;
+            color: white;
             font-size: 1rem;
-            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Suavidade */
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
             z-index: 1000;
         }
         .product-card img {
@@ -45,8 +46,7 @@
     <nav class="navbar navbar-expand-lg navbar-main">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="images/logo DoçaRIA.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
-                DoçaRIA
+                <img src="images/logoUpdated.jpg" width="30" height="30" class="d-inline-block align-top" alt="" style="border-radius: 15px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -66,15 +66,17 @@
         </div>
     </nav>
     <div class="container">
-        <section id="produtos" class="container my-4">
-            <h2 class="fw-bold mb-4" style="font-family: 'Pacifico';">Produtores em Destaque</h2>
+        <section id="produtos" class="container mt-4">
+            <div class="row text-center">
+                <h1 class="fw-bold" style="font-family: 'Pacifico';">Produtores em Destaque</h1>
+            </div>
             <hr>
             <div class="row" id="produtores-list">
                 <!-- Produtos serão adicionados dinamicamente -->
             </div>
         </section>
     </div>
-    <nav class="navbar bg-body-tertiary border-top fixed-bottom" style="background-color: #EF2A39;">
+    <nav class="navbar bg-body-tertiary border-top fixed-bottom" style="background-color: #d42e2e;">
         <div class="container small">
             <div class="navbar-text" style="color: white;">&copy;  DoçaRIA - MAS 2024/25</div>
             <div class="navbar-text" style="color: white;">Made with <i class="fa fa-heart" aria-hidden="true"></i> by Grupo 2 - P3</div>

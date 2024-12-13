@@ -3,6 +3,45 @@ const produtorRadio = document.getElementById('registerProdutor');
 const clienteForm = document.getElementById('clienteForm');
 const produtorForm = document.getElementById('produtorForm');
 
+const products = [
+    { id: 1, name: "Ovos Moles", price: 5.99, image: "https://via.placeholder.com/150", produtor: "Confeitaria Aveirense" },
+    { id: 2, name: "Pão de Ló", price: 7.50, image: "https://via.placeholder.com/150", produtor: "Doces da Maria" },
+    { id: 3, name: "Bolo Fixolas", price: 20, image: "https://via.placeholder.com/150", produtor: "Zé Dos Bolos" },
+    { id: 4, name: "Bolo de Cenoura", price: 25, image: "https://via.placeholder.com/150", produtor: "Zé Dos Bolos" },
+    { id: 5, name: "Queijadas de Sintra", price: 4.50, image: "https://via.placeholder.com/150", produtor: "Doçaria Real" },
+    { id: 6, name: "Pastéis de Nata", price: 1.20, image: "https://via.placeholder.com/150", produtor: "Fábrica de Nata" },
+    { id: 7, name: "Tarte de Amêndoa", price: 15, image: "https://via.placeholder.com/150", produtor: "Doce Dourado" },
+    { id: 8, name: "Bola de Berlim", price: 2.00, image: "https://via.placeholder.com/150", produtor: "Pastelaria Praia" },
+    { id: 9, name: "Toucinho do Céu", price: 18, image: "https://via.placeholder.com/150", produtor: "Sabores Celestiais" },
+    { id: 10, name: "Folar de Páscoa", price: 12, image: "https://via.placeholder.com/150", produtor: "Tradições da Avó" },
+    { id: 11, name: "Travesseiros de Sintra", price: 6.99, image: "https://via.placeholder.com/150", produtor: "Doçaria Real" },
+    { id: 12, name: "Pudim Flan", price: 8.50, image: "https://via.placeholder.com/150", produtor: "Doces da Maria" },
+    { id: 13, name: "Salame de Chocolate", price: 5.00, image: "https://via.placeholder.com/150", produtor: "Confeitaria Aveirense" },
+    { id: 14, name: "Brigadeiro", price: 1.50, image: "https://via.placeholder.com/150", produtor: "Zé Dos Bolos" },
+    { id: 15, name: "Leite Creme", price: 3.99, image: "https://via.placeholder.com/150", produtor: "Sabores Celestiais" },
+    { id: 16, name: "Mousse de Chocolate", price: 4.50, image: "https://via.placeholder.com/150", produtor: "Doces da Maria" },
+    { id: 17, name: "Tarte de Limão", price: 14, image: "https://via.placeholder.com/150", produtor: "Doce Dourado" },
+    { id: 18, name: "Arroz Doce", price: 3.50, image: "https://via.placeholder.com/150", produtor: "Fábrica de Nata" },
+    { id: 19, name: "Broa de Milho", price: 2.20, image: "https://via.placeholder.com/150", produtor: "Tradições da Avó" },
+    { id: 20, name: "Baba de Camelo", price: 4.00, image: "https://via.placeholder.com/150", produtor: "Sabores Celestiais" }
+];
+
+const produtores = [];
+
+const users = [
+    { email: "cliente@docaria.com", password: "123456", name: "Junco Juoum", tipo: "Cliente", foto: "https://cdn.discordapp.com/attachments/777582482752274453/1317231594284650608/omaiorjuncodepoisdomeupatrao.jpg?ex=675def05&is=675c9d85&hm=0878907100dca581a86a37b127731519c377aa18691b1d82fe578fdccbe9f8b1&" },
+    { email: "produtor@docaria.com", password: "654321", name: "Maria Doces", tipo: "Produtor" },
+    { email: "cliente1@docaria.com", password: "abc123", name: "Carlos Mendes", tipo: "Cliente" },
+    { email: "produtor1@docaria.com", password: "xyz456", name: "Joana Sobral", tipo: "Produtor" },
+    { email: "cliente2@docaria.com", password: "qwerty1", name: "Ana Silva", tipo: "Cliente" },
+    { email: "produtor2@docaria.com", password: "asdfgh2", name: "Pedro Rocha", tipo: "Produtor" },
+    { email: "cliente3@docaria.com", password: "zxcvbn3", name: "Beatriz Cunha", tipo: "Cliente" },
+    { email: "produtor3@docaria.com", password: "poiuyt4", name: "Miguel Lima", tipo: "Produtor" },
+    { email: "cliente4@docaria.com", password: "mnbvcx5", name: "Clara Santos", tipo: "Cliente" },
+    { email: "produtor4@docaria.com", password: "lkjhgf6", name: "Rafael Martins", tipo: "Produtor" },
+    { email: "cliente5@docaria.com", password: "567890", name: "Fernanda Lopes", tipo: "Cliente" },
+    { email: "produtor5@docaria.com", password: "098765", name: "Rodrigo Costa", tipo: "Produtor" }
+];
 
 
 let lastScrollY = window.scrollY; // Posição do scroll anterior
@@ -77,7 +116,8 @@ function validarRegisterCliente(){
 
 
 function logout() {
-    localStorage.removeItem("user-name"); // Remove os dados do usuário
+    console.log("SAI");
+    localStorage.removeItem("user-index"); // Remove os dados do usuário
     window.location.reload(); // Recarrega a página para atualizar a navbar
 }
 
@@ -90,9 +130,6 @@ function validarRegisterProdutor(){
     let Valido = true;
 
     console.log(tipo);
-    //console.log(nome);
-    //console.log(email);
-    //console.log(password);
 
     if(nome.length < 3){
         Valido = false;
@@ -127,21 +164,43 @@ function validarRegisterProdutor(){
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    const user = JSON.parse(localStorage.getItem("user-name")); // Recupera o usuário do localStorage
+    const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
 
-    if (user) {
-        // Atualiza o navbar com a mensagem de boas-vindas
-        document.getElementById("loginLI").classList.add("d-none"); // Esconde o botão de login
-        document.getElementById("userMenu").classList.remove("d-none"); // Mostra o menu do usuário
+    if (JSON.parse(localStorage.getItem("users")) == null || JSON.parse(localStorage.getItem("users")) == undefined) {
+        localStorage.setItem('users', JSON.stringify(users));
+        console.log("Transformei users para localStorage!");
+    }
+
+    console.log(user_index);
+    console.log(users);
+
+    products.forEach(product => {
+        if (!produtores.includes(product.produtor)) {
+            produtores.push(product.produtor);
+        }
+    });
+    localStorage.setItem('products', JSON.stringify(products));
+    localStorage.setItem('produtores', JSON.stringify(produtores));
+
+    //console.log(localStorage.getItem('products'));
+    //console.log(localStorage.getItem('produtores'));
+
+    if (user_index != null) {
+        console.log("Bem vindo", users[user_index].name);
+        document.getElementById("loginLI").classList.add("d-none");
+        document.getElementById("userMenu").classList.remove("d-none");
         document.getElementById("userMenu").innerHTML = `
             <label class="nav-link text-light" id="welcomeMessage">
-                Bem-vindo, ${user}
-                <button class="btn btn-secondary btn-sm">
-                    <i class="fa fa-cogs" aria-hidden="true"></i>
+                Bem-vindo, ${users[user_index].name}
+                <button class="btn btn-secondary btn-sm" onclick= "window.location.href = 'settings.html'">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
                 </button>
                 <button class="btn btn-secondary btn-sm" onclick="logout()">
                     <i class="fa fa-sign-out" aria-hidden="true"></i> Sair
                 </button>
             </label>`;
+    }
+    else {
+        console.log("Não há ninguém logado :(");
     }
 });

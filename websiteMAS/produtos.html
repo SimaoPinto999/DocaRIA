@@ -17,35 +17,56 @@
         body {
             font-family: 'Commissioner';
             padding-top: 50px;
+            background-color: #F5F5F5;
         }
 
         .navbar .nav-link,
         .navbar-brand,
         .btn-primary {
-            color: white !important; /* Torna o texto branco */
+            color: white !important;
         }
         .navbar-main {
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: #EF2A39; /* Fundo transparente */
-            color: white; /* Texto branco */
+            background-color: #d42e2e;
+            color: white;
             font-size: 1rem;
-            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Suavidade */
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
             z-index: 1000;
         }
         .product-card img {
             height: 150px;
             object-fit: cover;
         }
+        .btn-checkout {
+            background-color: #E67E22; /* Laranja suave */
+            color: white;
+            border: none;
+        }
+
+            .btn-checkout:hover {
+                background-color: #D35400; /* Laranja mais intenso */
+            }
+        .btn-primary:hover {
+            background-color: #21618C; /* Azul mais escuro */
+        }
+        .form-control {
+            border: 1px solid #BDC3C7;
+            border-radius: 5px;
+        }
+
+            .form-control:focus {
+                border-color: #2980B9; /* Azul */
+                box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
+            }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-main">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="images/logo DoçaRIA.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
-                DoçaRIA
+                <img src="images/logoUpdated.jpg" width="30" height="30" class="d-inline-block align-top" alt="" style="border-radius: 15px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -57,6 +78,7 @@
                     <li class="nav-item"><a class="nav-link" href="produtores.html"><i class="fa fa-user" aria-hidden="true"></i> Produtores</a></li>
                 </ul>
                 <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item"><a href="checkout.html" class="btn btn-checkout nav-link"> Checkout</a></li>
                     <li class="nav-item" id="loginLI"><a href="login.html" class="btn nav-link" style="background-color: #ff6b35;"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Login </a></li>
                     <li class="nav-item d-none text-center" id="userMenu">
                     </li>
@@ -65,17 +87,80 @@
         </div>
     </nav>
     <div class="container">
-        <section id="produtos" class="container my-4">
-            <div class="row">
-                <h2 class="fw-bold mb-4" style="font-family: 'Pacifico';">Produtos em Destaque</h2>
+        <section id="produtos" class="container mt-4">
+            <div class="row text-center">
+                <h1 class="fw-bold" style="font-family: 'Pacifico';">Produtos em Destaque</h1>
             </div>
-            <hr> 
+            <hr>
+            <!-- Barra de Filtros -->
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <select id="filter-maker" class="form-select">
+                        <!-- As opções serão carregadas dinamicamente pelo JavaScript -->
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <input type="number" id="filter-min-preco" class="form-control" placeholder="Preço Mínimo" />
+                </div>
+                <div class="col-md-3">
+                    <input type="number" id="filter-max-preco" class="form-control" placeholder="Preço Máximo" />
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-primary" onclick="filtrarProdutos()">Aplicar Filtros</button>
+                    <button class="btn btn-danger float-end" style="width:120px" onclick="limparFiltros()">Limpar</button>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <form class="d-flex" role="search" onsubmit="executarBusca(event)">
+                    <div class="col-md-3">
+                        <input id="campo-busca"
+                               class="form-control me-2"
+                               type="search"
+                               placeholder="Buscar produtos..."
+                               aria-label="Buscar" />
+                    </div>
+                    <div class="col-md-3 ms-4">
+                        <button class="btn btn-primary" style="width:110px" type="submit">Buscar</button>
+                        <button class="btn btn-secondary ms-2" style="width:110px" type="button" onclick="limparBusca()">Limpar</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-success" style="width:240px" type="button" data-bs-toggle="modal" data-bs-target="#cartModal"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Ver Carrinho</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button id="clear-cart-btn" class="btn btn-danger" style="width:240px" onclick="clearCartItems()">Limpar Carrinho</button>
+                       
+                    </div>
+                </form>
+            </div>
+            <hr />
+            <!-- Lista de Produtos -->
             <div class="row" id="product-list">
                 <!-- Produtos serão adicionados dinamicamente -->
             </div>
+            <hr class="mb-5"/>
         </section>
     </div>
-    <nav class="navbar bg-body-tertiary border-top" style="background-color: #EF2A39;">
+    <!-- Carrinho Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title fw-bold" id="cartModalLabel">Carrinho de Compras</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group" id="cartItems">
+                        <!-- Itens do carrinho serão adicionados dinamicamente -->
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <p class="me-auto fw-bold">Total: <span id="cartTotal">€0.00</span></p>
+                    <button type="button" class="btn" style="background-color: #ff6b35; color: white;" onclick="window.location = 'checkout.html'">Fazer Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar bg-body-tertiary border-top" style="background-color: #d42e2e;">
         <div class="container small">
             <div class="navbar-text" style="color: white;">&copy;  DoçaRIA - MAS 2024/25</div>
             <div class="navbar-text" style="color: white;">Made with <i class="fa fa-heart" aria-hidden="true"></i> by Grupo 2 - P3</div>

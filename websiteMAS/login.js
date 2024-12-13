@@ -3,10 +3,8 @@ const produtorRadio = document.getElementById('registerProdutor');
 const clienteForm = document.getElementById('clienteForm');
 const produtorForm = document.getElementById('produtorForm');
 
-const users = [
-    {email: "cliente@docaria.com", password: "123456", name: "Junco Juoum", tipo: "Cliente"},
-    {email: "produtor@docaria.com", password: "654321", name: "Maria Doces", tipo: "Cliente"}
-    ];
+var users = [];
+
 
 let lastScrollY = window.scrollY; // Posição do scroll anterior
     const navbar = document.querySelector('.navbar-main');
@@ -33,12 +31,16 @@ let lastScrollY = window.scrollY; // Posição do scroll anterior
 // login
 document.getElementById('loginForm').addEventListener('submit', function (e) {
     e.preventDefault();
+    console.log(typeof users); // Deve retornar "object"
+    console.log(Array.isArray(users)); // Deve retornar "true"
     const email = document.getElementById('loginemail').value;
     const password = document.getElementById('loginpassword').value;
     const user = users.find(u => u.email === email && u.password === password);
-
+    
     if (user) {
-        localStorage.setItem("user-name", JSON.stringify(user.name));
+        const userIndex = users.findIndex(u => u.email === user.email);
+        localStorage.setItem("user-index", userIndex);
+        console.log(userIndex);
         document.getElementById('loginLI').classList.add('d-none');
         document.getElementById('loginErro').classList.add('d-none');
         document.getElementById('userMenu').innerHTML = `<label class="nav-link text-light" id="welcomeMessage">Bem-vindo, ${user.name} <button class="btn btn-secondary btn-sm"><i class="fa fa-cogs" aria-hidden="true"></i></button></label>`;
@@ -141,7 +143,9 @@ function validarRegisterProdutor(){
 }
 
 function renderPage() {
+    users = JSON.parse(localStorage.getItem("users"));
+    console.log(users);
 }
 
 // Inicializar produtos
-document.addEventListener('DOMContentLoaded', renderPage);
+document.addEventListener('DOMContentLoaded', renderPage());
