@@ -20,8 +20,6 @@ const products = [
     { id: 14, name: "Arroz Doce", price: 3.50, image: "https://receitadaboa.com.br/wp-content/uploads/2024/04/iStock-119394438.jpg", produtor: "Fábrica de Nata" }
 ];
 
-
-
 const users = [
     {
         email: "cliente@docaria.com",
@@ -252,14 +250,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (JSON.parse(localStorage.getItem("users")) == null || JSON.parse(localStorage.getItem("users")) == undefined) {
         localStorage.setItem('users', JSON.stringify(users));
-        console.log("Transformei users para localStorage!");
+        console.log("Fui buscar os users aos valores default!");
     }
 
     tempusers = JSON.parse(localStorage.getItem("users"));
-    localStorage.setItem('users', JSON.stringify(users));
-
-    //console.log(user_index);
-    console.log(JSON.parse(localStorage.getItem("users")));
+    console.log("Users = ",JSON.parse(localStorage.getItem("users")));
 
     produtores = tempusers.filter(user => user.tipo === "Produtor");
     clientes = tempusers.filter(user => user.tipo === "Cliente");
@@ -280,13 +275,14 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem('cart', JSON.stringify(cart));
     //console.log(localStorage.getItem('cart'));
 
+    console.log(user_index);
     if (user_index != null) {
-        console.log("Bem vindo", users[user_index].name);
+        console.log("Bem vindo", tempusers[user_index].name);
         document.getElementById("loginLI").classList.add("d-none");
         document.getElementById("userMenu").classList.remove("d-none");
         document.getElementById("userMenu").innerHTML = `
             <label class="nav-link text-light" id="welcomeMessage">
-                Bem-vindo, ${users[user_index].name}
+                Bem-vindo, ${tempusers[user_index].name}
                 <button class="btn btn-secondary btn-sm" onclick= "window.location.href = 'settings.html'">
                   <i class="fa fa-cogs" aria-hidden="true"></i>
                 </button>

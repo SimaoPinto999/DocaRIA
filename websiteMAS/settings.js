@@ -11,14 +11,15 @@ var users = JSON.parse(localStorage.getItem("users"));
 
 function loadUserData() {
     console.log(user_index);
-
     if (user_index != null) {
         profileName.innerText = users[user_index].name || "Usuário";
-        profilePic.src = users[user_index].foto || "https://via.placeholder.com/150";
+        profilePic.src = users[user_index].foto;
         document.getElementById("email").value = users[user_index].email || "";
         document.getElementById("address").value = users[user_index].morada || "";
         document.getElementById("password").value = users[user_index].password || "**********";
         document.getElementById("conta").value = users[user_index].tipo;
+        document.getElementById("foto").value = users[user_index].foto;
+        console.log(users[user_index].foto);
     } else {
         alert("Nenhum usuário encontrado.");
     }
@@ -38,7 +39,8 @@ function saveUserData() {
         email: document.getElementById("email").value,
         morada: document.getElementById("address").value,
         password: document.getElementById("password").value,
-        tipo: document.getElementById("conta").value
+        tipo: document.getElementById("conta").value,
+        foto: document.getElementById("foto").value
     };
 
     console.log(user);
@@ -46,6 +48,7 @@ function saveUserData() {
     console.log(users);
     localStorage.setItem("users", JSON.stringify(users));
     alert("Detalhes salvos com sucesso!");
+    window.location.reload();
 }
 
         // Configurar os botões
@@ -82,6 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (user_index != null) {
+        console.log(users);
         console.log("Bem vindo", users[user_index].name);
         document.getElementById("loginLI").classList.add("d-none");
         document.getElementById("userMenu").classList.remove("d-none");

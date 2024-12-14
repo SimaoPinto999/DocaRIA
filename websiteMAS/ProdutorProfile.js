@@ -19,6 +19,7 @@ function loadUserData() {
         document.getElementById("businessType").value = users[user_index].TipoNegócio || "";
         document.getElementById("password").value = users[user_index].password || "**********";
         document.getElementById("conta").value = users[user_index].tipo;
+        document.getElementById("foto").value = users[user_index].foto;
     } else {
         alert("Nenhum usuário encontrado.");
     }
@@ -34,7 +35,7 @@ function logout() {
 function saveUserData() {
     const user = {
         name: profileName.innerText,
-        foto: profilePic.src,
+        foto: document.getElementById("foto").value,
         email: document.getElementById("email").value,
         morada: document.getElementById("address").value,
         TipoNegócio: document.getElementById("businessType").value,
