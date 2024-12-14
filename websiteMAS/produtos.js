@@ -1,5 +1,5 @@
 const products = JSON.parse(localStorage.getItem('products'));
-
+var cart =[];
 function renderProducts() {
     const productList = document.getElementById('product-list');
     productList.innerHTML = '';
@@ -43,8 +43,8 @@ function loadProducers() {
     // Adiciona cada produtor como uma opção no select
     produtores.forEach(produtor => {
         const option = document.createElement('option');
-        option.value = produtor;
-        option.textContent = produtor;
+        option.value = produtor.name;
+        option.textContent = produtor.name;
         selectElement.appendChild(option);
     });
 }
@@ -194,10 +194,10 @@ function updateCart() {
     console.log("cart = ", cart); //debug
 }
 function loadCart() {
-    const savedCart = localStorage.getItem('cart');
+    const savedCart = JSON.parse(localStorage.getItem('cart')); 
     if (savedCart) {
-        cart = JSON.parse(savedCart);
-        updateCart(); // Atualiza o carrinho renderizado com os dados carregados
+        cart = savedCart;
+        updateCart();
     }
     else {
         console.log("Carrinho não encontrado!")

@@ -111,7 +111,7 @@
     <div class="container">
         <div class="profile-header">
             <img id="profile-pic" src="https://via.placeholder.com/150" alt="Profile Picture">
-            <h1 id="profile-name">Carregando...</h1>
+            <h1 id="profile-name" class="fw-bold">Carregando...</h1>
         </div>
 
         <form id="accountForm">
@@ -120,8 +120,15 @@
                 <input type="email" id="email" value="">
             </div>
             <div class="form-group">
-                <label for="address">Morada de Envio</label>
+                <label for="address">Morada de Produção</label>
                 <input type="text" id="address" value="">
+            </div>
+            <div class="form-group">
+                <label for="businessType">Tipo de Negócio</label>
+                <select id="businessType" class="form-control" disabled>
+                    <option value="Independente">Independente</option>
+                    <option value="Confeitaria">Confeitaria</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
@@ -145,11 +152,12 @@
             </div>
         </form>
         <div class="options mb-5">
-            <a href="#">Detalhes de Pagamento</a>
-            <a href="#">Histórico de Encomendas</a>
-            <a href="#">Tornar-me Vendedor</a>
+            <a class="btn" href="#">Histórico de Vendas</a>
+            <a class="btn" href="#">Adicionar Produtos</a>
+            <a class="btn" onclick="goToProdutorPage()">Gerenciar Página</a>
         </div>
     </div>
+
     <nav class="navbar bg-body-tertiary border-top" style="background-color: #d42e2e;">
         <div class="container small">
             <div class="navbar-text" style="color: white;">&copy;  DoçaRIA - MAS 2024/25</div>
@@ -164,6 +172,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-    <script src="settings.js"></script>
+    <script src="ProdutorProfile.js"></script>
 </body>
 </html>

@@ -62,7 +62,7 @@ function loadCartForCheckout() {
         promoButton.addEventListener('click', () => {
             const promoCode = promoInput.value.trim();
             if (promoCode === "FREE" && !discountApplied) {
-                total *= 0;
+                total *= 0.9;
                 document.getElementById('cart-total').innerText = `${total.toFixed(2)}`;
                 discountApplied = true;
                 document.getElementById('erroCodigo').classList.add('d-none');

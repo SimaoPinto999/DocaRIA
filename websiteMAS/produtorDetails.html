@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,8 +7,8 @@
     <link rel="icon" href="images/logo DoçaRIA.jpg" type="image/icon type">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" >
     <!--Remote links-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -16,33 +16,57 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            font-family: 'Commissioner';
-            padding-top: 50px;
+            font-family: "Commissioner";
             background-color: #F5F5F5;
         }
 
-        .navbar .nav-link,
-        .navbar-brand,
-        .btn-primary {
-            color: white !important;
-        }
-        .navbar-main {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #d42e2e;
+        .banner {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('https://via.placeholder.com/1500x400') no-repeat center center/cover;
             color: white;
-            font-size: 1rem;
-            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-            z-index: 1000;
+            text-align: center;
+            padding: 50px 0;
         }
-        .product-card img {
+
+            .banner h1 {
+                font-size: 3rem;
+                font-weight: bold;
+            }
+
+        .store-details {
+            margin-top: 30px;
+        }
+
+            .store-details .card {
+                border: none;
+                background-color: #ffffff;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+        .gallery img {
+            width: 100%;
             height: 150px;
             object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .gallery {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        footer {
+            margin-top: 30px;
+            background: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px;
         }
     </style>
 </head>
 <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-main">
         <div class="container">
             <a class="navbar-brand" href="index.html">
@@ -65,17 +89,34 @@
             </div>
         </div>
     </nav>
-    <div class="container">
-        <section id="produtos" class="container mt-4 mb-5">
-            <div class="row text-center">
-                <h1 class="fw-bold" style="font-family: 'Pacifico'; color: #ff6b35;">Produtores em Destaque</h1>
-            </div>
-            <hr>
-            <div class="row" id="produtores-list">
-                <!-- Produtos serão adicionados dinamicamente -->
-            </div>
-        </section>
+    <div class="banner mt-5" id="banner">
+        <h1 id="store-name" style="font-weight: bold; font-family: 'Pacifico';">Carregando...</h1>
+        <p id="store-type">Tipo de Negócio: Carregando...</p>
     </div>
+    <!-- Loja Detalhes -->
+    <div class="container store-details mb-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img id="store-image" src="https://via.placeholder.com/400" alt="Não Existe foto" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Informações da Loja</h5>
+                        <br />
+                        <p class="card-text"><strong>Endereço:</strong> <span id="store-address">Carregando...</span></p>
+                        <p class="card-text"><strong>Descrição:</strong> <span id="store-description">Carregando...</span></p>
+                        <button class="btn btn-primary" id="contact-btn"><i class="fa fa-phone" aria-hidden="true"></i> Contatar Loja</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h3 class="fw-bold">Produtos em Destaque</h3>
+                <div class="gallery" id="product-gallery">
+                    <!-- Galeria será carregada dinamicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
     <nav class="navbar bg-body-tertiary border-top" style="background-color: #d42e2e;">
         <div class="container small">
             <div class="navbar-text" style="color: white;">&copy;  DoçaRIA - MAS 2024/25</div>
@@ -85,10 +126,6 @@
             </div>
         </div>
     </nav>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="produtores.js"></script>
+    <script src="produtorDetails.js"></script>
 </body>
 </html>

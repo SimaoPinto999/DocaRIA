@@ -78,7 +78,7 @@
                     <li class="nav-item"><a class="nav-link" href="produtores.html"><i class="fa fa-user" aria-hidden="true"></i> Produtores</a></li>
                 </ul>
                 <ul class="navbar-nav justify-content-end">
-                    <li class="nav-item"><a href="checkout.html" class="btn btn-checkout nav-link"> Checkout</a></li>
+                    <li class="nav-item"><a href="checkout.html" class="btn btn-checkout nav-link"><i class="fa fa-credit-card" aria-hidden="true"></i> Checkout</a></li>
                     <li class="nav-item" id="loginLI"><a href="login.html" class="btn nav-link" style="background-color: #ff6b35;"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Login </a></li>
                     <li class="nav-item d-none text-center" id="userMenu">
                     </li>
@@ -89,7 +89,7 @@
     <div class="container">
         <section id="produtos" class="container mt-4">
             <div class="row text-center">
-                <h1 class="fw-bold" style="font-family: 'Pacifico';">Produtos em Destaque</h1>
+                <h1 class="fw-bold" style="font-family: 'Pacifico'; color: #ff6b35;">Produtos em Destaque</h1>
             </div>
             <hr>
             <!-- Barra de Filtros -->
@@ -106,8 +106,8 @@
                     <input type="number" id="filter-max-preco" class="form-control" placeholder="Preço Máximo" />
                 </div>
                 <div class="col-md-3">
-                    <button class="btn btn-primary" onclick="filtrarProdutos()">Aplicar Filtros</button>
-                    <button class="btn btn-danger float-end" style="width:120px" onclick="limparFiltros()">Limpar</button>
+                    <button class="btn btn-primary btn-sm" style="width:120px" onclick="filtrarProdutos()">Aplicar Filtros</button>
+                    <button class="btn btn-danger btn-sm float-end" style="width:120px" onclick="limparFiltros()">Limpar Filtros</button>
                 </div>
             </div>
             <div class="row mb-3">
@@ -121,7 +121,7 @@
                     </div>
                     <div class="col-md-3 ms-4">
                         <button class="btn btn-primary" style="width:110px" type="submit">Buscar</button>
-                        <button class="btn btn-secondary ms-2" style="width:110px" type="button" onclick="limparBusca()">Limpar</button>
+                        <button class="btn btn-danger ms-2" style="width:110px" type="button" onclick="limparBusca()">Limpar</button>
                     </div>
                     <div class="col-md-3">
                         <button class="btn btn-success" style="width:240px" type="button" data-bs-toggle="modal" data-bs-target="#cartModal"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Ver Carrinho</button>

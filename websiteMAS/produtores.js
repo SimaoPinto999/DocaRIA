@@ -1,18 +1,21 @@
 const produtores = JSON.parse(localStorage.getItem('produtores'));
+console.log(produtores);
 
 function renderProdutores() {
     const produtoresList = document.getElementById('produtores-list');
     for (i = 0; i < produtores.length; i++) {
             produtoresList.innerHTML += `
               <div class="col-md-3 text-center">
-                <div class="card mb-3">
-                  <img src="https://via.placeholder.com/150" class="card-img-top" alt="">
-                  <div class="card-body">
-                    <h5 class="card-title">${produtores[i]}</h5>
-                    <button class="btn btn-primary" onclick=""><i class="fa fa-external-link-square" aria-hidden="true"></i> Explorar Loja</button>
+                  <div class="card mb-3">
+                    <img src="${produtores[i].foto}" class="card-img-top" alt="">
+                    <div class="card-body">
+                      <h5 class="card-title">${produtores[i].name}</h5>
+                      <button class="btn btn-primary btn-sm" onclick="window.location.href='produtorDetails.html?id=${encodeURIComponent(produtores[i].name)}'">
+                        <i class="fa fa-external-link-square" aria-hidden="true"></i> Explorar Loja
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
             `;
     }
 }
@@ -23,7 +26,6 @@ function logout() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    renderProdutores();
     const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
     users = JSON.parse(localStorage.getItem("users"));
 
@@ -42,4 +44,5 @@ document.addEventListener("DOMContentLoaded", () => {
               </button>
           </label>`;
     }
+    renderProdutores();
 });
