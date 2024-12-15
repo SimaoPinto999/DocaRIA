@@ -7,7 +7,7 @@ function renderProdutores() {
             produtoresList.innerHTML += `
               <div class="col-md-3 text-center">
                   <div class="card mb-3">
-                    <img src="${produtores[i].foto}" class="card-img-top" alt="" style="max-height:130px; max-width:260px;">
+                    <iframe src="${produtores[i].foto}" class="card-img-top" frameborder="0" scrolling="no" allowfullscreen title="foto1" style="max-height:150px; max-width:300px;"></iframe>
                     <div class="card-body">
                       <h5 class="card-title">${produtores[i].name}</h5>
                       <button class="btn btn-primary btn-sm" onclick="window.location.href='produtorDetails.html?id=${encodeURIComponent(produtores[i].name)}'">

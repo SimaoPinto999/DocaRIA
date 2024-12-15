@@ -1,21 +1,26 @@
 function validateForm() {
     (() => {
-        'use strict'
+        'use strict';
 
         // Seleciona todos os formulários que requerem validação
-        const forms = document.querySelectorAll('.needs-validation')
+        const forms = document.querySelectorAll('.needs-validation');
 
         // Adiciona evento de validação em cada formulário
         Array.from(forms).forEach(form => {
             form.addEventListener('submit', event => {
                 if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
+                    // Impede o envio do formulário se for inválido
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    // Apenas redireciona se o formulário for válido
+                    event.preventDefault(); // Evita envio padrão
+                    window.location.href = "encomendaFeita.html";
                 }
 
-                form.classList.add('was-validated')
-            }, false)
-        })
+                form.classList.add('was-validated');
+            }, false);
+        });
     })();
 }
 

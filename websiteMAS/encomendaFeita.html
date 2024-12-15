@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,8 +7,8 @@
     <link rel="icon" href="images/logo DoçaRIA.jpg" type="image/icon type">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Commissioner&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" >
     <!--Remote links-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -16,31 +16,9 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            font-family: 'Commissioner';
-            padding-top: 50px;
+            font-family: "Commissioner";
             background-color: #F5F5F5;
-        }
-        iframe {
-            pointer-events: none; /* Impede interações com o iframe */
-        }
-        .navbar .nav-link,
-        .navbar-brand,
-        .btn-primary {
-            color: white !important;
-        }
-        .navbar-main {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #d42e2e;
-            color: white;
-            font-size: 1rem;
-            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-            z-index: 1000;
-        }
-        .product-card img {
-            height: 150px;
-            object-fit: cover;
+            padding-top: 120px;
         }
     </style>
 </head>
@@ -67,17 +45,18 @@
             </div>
         </div>
     </nav>
-    <div class="container">
-        <section id="produtos" class="container mt-4 mb-5">
-            <div class="row text-center">
-                <h1 class="fw-bold" style="font-family: 'Pacifico'; color: #ff6b35;">Produtores em Destaque</h1>
+    <div class="container text-center mt-5">
+        <div class="card shadow">
+            <div class="card-body">
+                <h1 class="card-title text-success fw-bold">Encomenda Confirmada!</h1>
+                <p class="card-text fs-5">Obrigado pela sua compra! O ID da sua encomenda é:</p>
+                <h2 class="fw-bold text-primary" id="orderId">#</h2>
+                <p class="text-muted fst-italic">Guarde este número para referência futura.</p>
+                <a href="index.html" class="btn btn-primary mt-3">Voltar à Página Inicial</a>
             </div>
-            <hr>
-            <div class="row" id="produtores-list">
-                <!-- Produtos serão adicionados dinamicamente -->
-            </div>
-        </section>
+        </div>
     </div>
+    <div class="container" style="height: 145px"></div>
     <nav class="navbar bg-body-tertiary border-top" style="background-color: #d42e2e;">
         <div class="container small">
             <div class="navbar-text" style="color: white;">&copy;  DoçaRIA - MAS 2024/25</div>
@@ -87,10 +66,59 @@
             </div>
         </div>
     </nav>
+
+    <!-- JavaScript -->
+    <script>
+        const cart = JSON.parse(localStorage.getItem("cart"));
+        users = JSON.parse(localStorage.getItem("users"));
+        var encomendas = [];
+        console.log("Cart = ", cart);
+
+        function generateOrderId() {
+            const timestamp = Date.now(); // Número único baseado no tempo
+            //const randomNumber = Math.floor(Math.random() * 1000); Número aleatório para mais segurança
+            return `ORD-${timestamp}`; // Formato do ID
+        }
+
+        function guardarPedido() {
+            const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
+            encomendas.push({
+                pedido: cart,
+                name: users[user_index].name,
+                id: orderId
+            });
+            localStorage.setItem('encomendas', JSON.stringify(encomendas));
+            console.log("Encomendas = ", encomendas);
+            localStorage.removeItem('cart');
+        }
+            
+        // Gera e exibe o ID da encomenda
+        const orderId = generateOrderId();
+        document.getElementById("orderId").textContent = orderId;
+        guardarPedido();
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
+            if (user_index != null) {
+                document.getElementById("loginLI").classList.add("d-none");
+                document.getElementById("userMenu").classList.remove("d-none");
+                document.getElementById("userMenu").innerHTML = `
+                <label class="nav-link text-light" id="welcomeMessage">
+                    Bem-vindo, ${users[user_index].name}
+                    <button class="btn btn-secondary btn-sm" onclick= "window.location.href = 'settings.html'">
+                      <i class="fa fa-cogs" aria-hidden="true"></i>
+                  </button>
+                    <button class="btn btn-secondary btn-sm" onclick="logout()">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i> Sair
+                    </button>
+                </label>`;
+            }
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="produtores.js"></script>
 </body>
 </html>

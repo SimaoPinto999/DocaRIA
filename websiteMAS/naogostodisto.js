@@ -26,7 +26,7 @@ const users = [
         password: "123456",
         name: "Junco Juoum",
         tipo: "Cliente",
-        foto: "https://cdn.discordapp.com/attachments/777582482752274453/1317231594284650608/omaiorjuncodepoisdomeupatrao.jpg?ex=675def05&is=675c9d85&hm=0878907100dca581a86a37b127731519c377aa18691b1d82fe578fdccbe9f8b1&",
+        foto: "",
         morada: "Rua Principal, Nº1, Lisboa, PT"
     },
     {
@@ -34,9 +34,10 @@ const users = [
         password: "654321",
         name: "Confeitaria Aveirense",
         tipo: "Produtor",
-        morada: "Rua da Alegria, Nº22, Porto, PT",
-        foto: "https://pontourbano.pt/static/08e548268c40b3cc0feb40ece623ddfb/e296a/peixinho.jpg",
-        TipoNegócio: "Confeitaria"
+        morada: "Rua da Alegria, Nº22, Aveiro, PT",
+        foto: "https://uapt33090-my.sharepoint.com/personal/simaopinto06_ua_pt/_layouts/15/embed.aspx?UniqueId=74b61d94-4ea9-42b4-b942-fc9eaa199177",
+        TipoNegócio: "Confeitaria",
+        "descricao": "A Confeitaria Aveirense é especializada em produtos de confeitaria tradicionais de Aveiro, com uma vasta gama de doces regionais que conquistam os corações dos amantes da gastronomia local."
     },
     {
         email: "cliente1@docaria.com",
@@ -50,9 +51,10 @@ const users = [
         password: "xyz456",
         name: "Doces da Maria",
         tipo: "Produtor",
-        morada: "Rua das Flores, Nº10, Coimbra, PT",
+        morada: "Rua das Flores, Nº10, Aveiro, PT",
         TipoNegócio: "Independente",
-        foto: "https://cdn.discordapp.com/attachments/777582482752274453/1317511509638778991/foto1.jpeg?ex=675ef3b6&is=675da236&hm=3d1f28d112d7c3c16b94e9b9c8a8b716a5b5522d156310525f041921346b3ede&"
+        foto: "https://uapt33090-my.sharepoint.com/personal/simaopinto06_ua_pt/_layouts/15/embed.aspx?UniqueId=6a046fb2-a49b-49d8-8040-069eee8c3429",
+        "descricao": "Doces da Maria é uma marca local que combina ingredientes frescos e receitas tradicionais para criar doces deliciosos, feitos com carinho e dedicação, perfeitos para qualquer ocasião especial."
     },
     {
         email: "cliente2@docaria.com",
@@ -66,9 +68,10 @@ const users = [
         password: "asdfgh2",
         name: "Zé Dos Bolos",
         tipo: "Produtor",
-        morada: "Rua do Sol, Nº18, Faro, PT",
+        morada: "Rua do Sol, Nº18, Aveiro, PT",
         TipoNegócio: "Independente",
-        foto: "https://cdn.discordapp.com/attachments/777582482752274453/1317511508346798151/foto4.jpg?ex=675ef3b5&is=675da235&hm=dad36a73f4576d4d0496f2d827a1dfb476595f0da0dd1579ad89a418af918aab&"
+        foto: "https://uapt33090-my.sharepoint.com/personal/simaopinto06_ua_pt/_layouts/15/embed.aspx?UniqueId=953556c8-066c-4a8b-ba34-a524676319f4",
+        "descricao": "Zé Dos Bolos é conhecido pela sua variedade de bolos frescos e irresistíveis, sempre preparados com os melhores ingredientes e oferecendo opções para todos os gostos."
     },
     {
         email: "cliente3@docaria.com",
@@ -82,9 +85,10 @@ const users = [
         password: "poiuyt4",
         name: "Doçaria Real",
         tipo: "Produtor",
-        morada: "Rua do Mar, Nº12, Funchal, PT",
+        morada: "Rua do Mar, Nº12, Aveiro, PT",
         TipoNegócio: "Confeitaria",
-        foto: "https://cdn.discordapp.com/attachments/777582482752274453/1317511507592085554/foto2.jpg?ex=675ef3b5&is=675da235&hm=f8cf6cfa4c6c8c59ecfcc03a467baf53cd1263996bf0cccf0754ac6a4d659b2c&"
+        foto: "https://uapt33090-my.sharepoint.com/personal/simaopinto06_ua_pt/_layouts/15/embed.aspx?UniqueId=d0068798-cebe-4ab8-9aeb-437381d95fae",
+        "descricao": "Doçaria Real é uma confeitaria de renome que se destaca pela excelência na produção de doces de luxo, trazendo o melhor da tradição e inovação em cada fatia de bolo."
     },
     {
         email: "cliente4@docaria.com",
@@ -98,9 +102,10 @@ const users = [
         password: "lkjhgf6",
         name: "Fábrica de Nata",
         tipo: "Produtor",
-        morada: "Rua das Pedras, Nº5, Viseu, PT",
+        morada: "Rua das Pedras, Nº5, Aveiro, PT",
         TipoNegócio: "Confeitaria",
-        foto: "https://cdn.discordapp.com/attachments/777582482752274453/1317511509169012746/foto7.jpg?ex=675ef3b5&is=675da235&hm=afabcceab85987ba113102fce92c830cb47a12507c4818c072f898c071b4f8c5&"
+        foto: "https://uapt33090-my.sharepoint.com/personal/simaopinto06_ua_pt/_layouts/15/embed.aspx?UniqueId=f2d639cb-e029-4231-aae1-63bd748895c4",
+        "descricao": "Fábrica de Nata é especializada na criação de irresistíveis pastéis de nata, feitos com uma receita secreta que proporciona um sabor único e inesquecível."
     },
     {
         email: "cliente5@docaria.com",
@@ -114,9 +119,10 @@ const users = [
         password: "098765",
         name: "Doce Dourado",
         tipo: "Produtor",
-        morada: "Rua Nova, Nº30, Évora, PT",
+        morada: "Rua Nova, Nº30, Aveiro, PT",
         TipoNegócio: "Confeitaria",
-        foto: "https://cdn.discordapp.com/attachments/777582482752274453/1317511508833472543/foto5.jpg?ex=675ef3b5&is=675da235&hm=90feea0b6d4f18adbf45e07d83af1e08ebad33355bcafa825c2d6fe83a0fa561&"
+        foto: "https://uapt33090-my.sharepoint.com/personal/simaopinto06_ua_pt/_layouts/15/embed.aspx?UniqueId=8608cd97-e6e9-4dfb-a11b-78e6da0d6ba3",
+        "descricao": "Doce Dourado é uma confeitaria focada em oferecer doces de alta qualidade com uma mistura de sabores modernos e tradicionais, buscando sempre agradar aos mais exigentes paladares."
     }
 ];
 

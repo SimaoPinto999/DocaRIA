@@ -20,13 +20,10 @@ function loadStoreDetails() {
         console.log("Loja não encontrada!");
     }
     console.log(store);
-
-    // Preencher os detalhes da loja
-    document.getElementById("banner").style.background = `linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('${store.foto}') no-repeat center center/cover`;
     document.getElementById("store-name").innerText = store.name;
     document.getElementById("store-type").innerText = `Tipo de Negócio: ${store.TipoNegócio}`;
     document.getElementById("store-address").innerText = store.morada;
-    document.getElementById("store-description").innerText = store.description || "Sem descrição (ainda!)";
+    document.getElementById("store-description").innerText = store.descricao || "Sem descrição (ainda!)";
     document.getElementById("store-image").src = store.foto || "";
 
     // Preencher a galeria de produtos
@@ -92,7 +89,7 @@ function loadStoreDetails() {
 // Carregar os detalhes ao iniciar
 document.addEventListener("DOMContentLoaded", () => {
     const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
-    console.log("Produtores = ", users);
+    console.log("Users = ", users);
 
     if (user_index != null) {
         console.log("Bem vindo", users[user_index].name);

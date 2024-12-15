@@ -21,6 +21,9 @@
             padding-top: 70px;
         }
 
+        iframe {
+            pointer-events: none; /* Impede interações com o iframe */
+        }
         .profile-header {
             text-align: center;
             margin-bottom: 20px;
@@ -110,7 +113,7 @@
     </nav>
     <div class="container">
         <div class="profile-header">
-            <img id="profile-pic" src="https://via.placeholder.com/150" alt="Profile Picture">
+            <iframe id="profile-pic" src="https://via.placeholder.com/150" scrolling="no" frameborder="0" style="width: 350px; height: 200px; border: 5px solid #ccc; object-fit: cover;"></iframe>
             <h1 id="profile-name" class="fw-bold">Carregando...</h1>
         </div>
 
@@ -137,6 +140,10 @@
             <div class="form-group">
                 <label for="conta">Tipo de Conta:</label>
                 <input type="text" id="conta" value="" disabled>
+            </div>
+            <div class="form-group">
+                <label for="descricao">Descrição:</label>
+                <input type="text" id="descricao" value="">
             </div>
             <div class="form-group">
                 <label for="foto">Foto:</label>
