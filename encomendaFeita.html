@@ -71,7 +71,7 @@
     <script>
         const cart = JSON.parse(localStorage.getItem("cart"));
         users = JSON.parse(localStorage.getItem("users"));
-        var encomendas = [];
+        var encomendas = JSON.parse(localStorage.getItem("encomendas"));;
         console.log("Cart = ", cart);
 
         function generateOrderId() {
