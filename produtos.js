@@ -1,7 +1,9 @@
 const products = JSON.parse(localStorage.getItem('products'));
 console.log(products);
-var cart =[];
+var cart = [];
+var indexs = [];
 function renderProducts() {
+    indexs = updateIndexes(products);
     const productList = document.getElementById('product-list');
     productList.innerHTML = '';
     console.log("Items carregados!");
@@ -21,6 +23,17 @@ function renderProducts() {
               </div>
             `;
     });
+}
+
+function updateIndexes(array) {
+    var NovosIndexes = [];
+    for (i = 0; i < array.length; i++) {
+        if (!NovosIndexes.includes(array[i].id)) {
+            NovosIndexes.push(array[i].id);
+        }
+    }
+    console.log("Novos Indexes = ", NovosIndexes);
+    return NovosIndexes
 }
 function limparFiltros() {
     document.getElementById('filter-maker').value = '';
@@ -79,7 +92,8 @@ function executarBusca(event) {
         produto.name.toLowerCase().includes(termoBusca) ||
         produto.produtor.toLowerCase().includes(termoBusca)
     );
-
+    indexs = updateIndexes(produtosFiltrados);
+    console.log("Indexs = ", indexs);
     renderProductsAtualizado(produtosFiltrados);
 }
 
@@ -143,19 +157,21 @@ function filtrarProdutos() {
         return correspondeProdutor && correspondePreco;
     });
 
+    indexs = updateIndexes(produtosFiltrados);
+    console.log("Indexs = ", indexs);
     renderProductsAtualizado(produtosFiltrados);
 }
 
 function addToCart(productId) {
     console.log("addToCart chamada!");
     console.log(productId); //debug
-    for (i = 1; i <= products.length; i++) { //limpar item adcionado dos outros items
-        console.log(i);
-        if (i == productId) {
+    for (i = 0; i < indexs.length; i++) { //limpar item adcionado dos outros items
+        console.log(indexs[i]);
+        if (indexs[i] == productId) {
             document.getElementById("product" + productId).classList.remove('d-none');
         }
         else {
-            document.getElementById("product" + i).classList.add('d-none');
+            document.getElementById("product" + indexs[i]).classList.add('d-none');
         }
     }
 

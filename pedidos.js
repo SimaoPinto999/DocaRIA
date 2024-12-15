@@ -1,51 +1,4 @@
-﻿//const encomendas = JSON.parse(localStorage.getItem('encomendas'));
-const encomendas = [
-    {
-        "pedido": [
-            {
-                "id": 12,
-                "name": "Mousse de Chocolate",
-                "price": 4.5,
-                "image": "https://www.receitasnestle.com.br/sites/default/files/srh_recipes/369562012750bd46ceaeef5d59a23229.jpg",
-                "produtor": "Doces da Maria",
-                "quantity": 11
-            }
-        ],
-        "name": "Confeitaria Aveirense",
-        "id": "ORD-1734284200397",
-        estado: "Em preparo"
-    },
-    {
-        "pedido": [
-            {
-                "id": 13,
-                "name": "Torta de Limão",
-                "price": 6.0,
-                "image": "https://www.receitasnestle.com.br/sites/default/files/srh_recipes/369562012750bd46ceaeef5d59a23229.jpg",
-                "produtor": "Confeitaria Aveirense",
-                "quantity": 3
-            }
-        ],
-        "name": "Confeitaria Aveirense",
-        "id": "ORD-1734284200398",
-        estado: "Em preparo"
-    },
-    {
-        "pedido": [
-            {
-                "id": 14,
-                "name": "Bolo de Fubá",
-                "price": 5.0,
-                "image": "https://www.receitasnestle.com.br/sites/default/files/srh_recipes/369562012750bd46ceaeef5d59a23229.jpg",
-                "produtor": "Doces da Maria",
-                "quantity": 8
-            }
-        ],
-        "name": "Doçaria Real",
-        "id": "ORD-1734284200399",
-        estado: "Em preparo"
-    }
-];
+﻿const encomendas = JSON.parse(localStorage.getItem('encomendas'));
 console.log("Encomendas = ", encomendas);
 
 const user_index = JSON.parse(localStorage.getItem("user-index"));
@@ -53,26 +6,38 @@ users = JSON.parse(localStorage.getItem("users"));
 
 var pedidosFeitos = [];
 
-const pedidosRecebidos = [
-    { cliente: 'João Silva', produto: 'Bolo de Chocolate', quantidade: 3, data: '2024-12-14', status: 'Entregue' },
-    { cliente: 'Maria Oliveira', produto: 'Bolo de Morango', quantidade: 2, data: '2024-12-13', status: 'Aguardando pagamento' },
-    { cliente: 'Carlos Pereira', produto: 'Donuts', quantidade: 5, data: '2024-12-12', status: 'Entregue' },
-    { cliente: 'Ana Souza', produto: 'Torta de Limão', quantidade: 4, data: '2024-12-11', status: 'Aguardando preparo' }
-];
-function filtrarPedidos(nomeProdutor) {
+var pedidosRecebidos = [];
+function filtrarPedidosPedidos(nomeProdutor) {
     return encomendas.filter(pedido => pedido.name === nomeProdutor);
+}
+function logout() {
+    console.log("SAI");
+    localStorage.removeItem("user-index"); // Remove os dados do usuário
+    window.location.reload(); // Recarrega a página para atualizar a navbar
 }
 
 function calcularQuantidadeTotal(pedido) {
     return pedido.reduce((total, item) => total + item.quantity, 0);
 }
 
+function obterTodosOsProdutores(encomendas) {
+    const produtores = encomendas.flatMap(encomenda =>
+        encomenda.pedido.map(pedido => pedido.produtor)
+    );
+    return [...new Set(produtores)]; // Remove duplicados
+}
+
+function obterEncomendasPorProdutor(encomendas) {
+    return encomendas.filter(encomenda =>
+        encomenda.pedido.some(pedido => pedido.produtor === users[user_index].name)
+    );
+}
+
 function renderPedidosFeitos() {
-    encomendasFeitas = filtrarPedidos(users[user_index].name);
+    encomendasFeitas = filtrarPedidosPedidos(users[user_index].name);
     console.log(encomendasFeitas);
     const tableBody = document.getElementById('orders-made-body');
     tableBody.innerHTML = '';
-
     encomendasFeitas.forEach(pedido => {
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -85,17 +50,23 @@ function renderPedidosFeitos() {
 }
 
 function renderPedidosRecebidos() {
+    pedidosRecebidos = obterEncomendasPorProdutor(encomendas);
+    console.log(pedidosRecebidos);
     const tableBody = document.getElementById('orders-received-body');
     tableBody.innerHTML = '';
 
     pedidosRecebidos.forEach(pedido => {
         const row = document.createElement('tr');
+        var nomeProdutos = [...new Set(pedido.pedido.map(p => p.name))];
+        var quantidadeProdutos = pedido.pedido.map(produto => produto.quantity);
+        console.log("Nome Produtos = ",nomeProdutos);
+        console.log("Quantidades Produtos = ",quantidadeProdutos);
         row.innerHTML = `
-            <td>${pedido.cliente}</td>
-            <td>${pedido.produto}</td>
-            <td>${pedido.quantidade}</td>
-            <td>${pedido.data}</td>
-            <td><span class="badge bg-${pedido.status === 'Entregue' ? 'success' : pedido.status === 'Aguardando pagamento' ? 'warning' : 'primary'}">${pedido.status}</span></td>
+            <td>${pedido.id}</td>
+            <td>${pedido.name}</td>
+            <td>${nomeProdutos}</td>
+            <td>${quantidadeProdutos}</td>
+            <td><span class="badge fw-bold bg-danger">Para fazer...</span></td>
         `;
         tableBody.appendChild(row);
     });
