@@ -85,6 +85,13 @@ function goToProdutorPage() {
     window.location.href = pageUrl;
 }
 
+function goToProdutorProdutos() {
+    const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
+    const encodedName = encodeURIComponent(users[user_index].name);
+    const pageUrl = `addProduto.html?id=${encodedName}`;
+    window.location.href = pageUrl;
+}
+
 // Carregar dados do usuário ao iniciar
 document.addEventListener("DOMContentLoaded", () => {
     const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage

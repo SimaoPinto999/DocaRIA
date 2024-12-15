@@ -1,4 +1,5 @@
 const products = JSON.parse(localStorage.getItem('products'));
+console.log(products);
 var cart =[];
 function renderProducts() {
     const productList = document.getElementById('product-list');
@@ -148,13 +149,15 @@ function filtrarProdutos() {
 function addToCart(productId) {
     console.log("addToCart chamada!");
     console.log(productId); //debug
-
     for (i = 1; i <= products.length; i++) { //limpar item adcionado dos outros items
-        if (i != productId) {
+        console.log(i);
+        if (i == productId) {
+            document.getElementById("product" + productId).classList.remove('d-none');
+        }
+        else {
             document.getElementById("product" + i).classList.add('d-none');
         }
     }
-    document.getElementById("product" + productId).classList.remove('d-none');
 
     const product = products.find(p => p.id === productId);
     const cartItem = cart.find(item => item.id === productId);
@@ -230,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderProducts();
     const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
     users = JSON.parse(localStorage.getItem("users"));
-  
+    
     if (user_index != null) {
         document.getElementById("loginLI").classList.add("d-none");
         document.getElementById("userMenu").classList.remove("d-none");
