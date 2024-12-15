@@ -35,7 +35,7 @@ const users = [
         name: "Confeitaria Aveirense",
         tipo: "Produtor",
         morada: "Rua da Alegria, Nº22, Aveiro, PT",
-        foto: "https://uapt33090-my.sharepoint.com/personal/simaopinto06_ua_pt/_layouts/15/embed.aspx?UniqueId=74b61d94-4ea9-42b4-b942-fc9eaa199177",
+        foto: "images/foto1.jpeg",
         TipoNegócio: "Confeitaria",
         "descricao": "A Confeitaria Aveirense é especializada em produtos de confeitaria tradicionais de Aveiro, com uma vasta gama de doces regionais que conquistam os corações dos amantes da gastronomia local."
     },
@@ -53,7 +53,7 @@ const users = [
         tipo: "Produtor",
         morada: "Rua das Flores, Nº10, Aveiro, PT",
         TipoNegócio: "Independente",
-        foto: "https://uapt33090-my.sharepoint.com/personal/simaopinto06_ua_pt/_layouts/15/embed.aspx?UniqueId=6a046fb2-a49b-49d8-8040-069eee8c3429",
+        foto: "images/foto3.jpg",
         "descricao": "Doces da Maria é uma marca local que combina ingredientes frescos e receitas tradicionais para criar doces deliciosos, feitos com carinho e dedicação, perfeitos para qualquer ocasião especial."
     },
     {
@@ -70,7 +70,7 @@ const users = [
         tipo: "Produtor",
         morada: "Rua do Sol, Nº18, Aveiro, PT",
         TipoNegócio: "Independente",
-        foto: "https://uapt33090-my.sharepoint.com/personal/simaopinto06_ua_pt/_layouts/15/embed.aspx?UniqueId=953556c8-066c-4a8b-ba34-a524676319f4",
+        foto: "images/foto4.jpg",
         "descricao": "Zé Dos Bolos é conhecido pela sua variedade de bolos frescos e irresistíveis, sempre preparados com os melhores ingredientes e oferecendo opções para todos os gostos."
     },
     {
@@ -87,7 +87,7 @@ const users = [
         tipo: "Produtor",
         morada: "Rua do Mar, Nº12, Aveiro, PT",
         TipoNegócio: "Confeitaria",
-        foto: "https://uapt33090-my.sharepoint.com/personal/simaopinto06_ua_pt/_layouts/15/embed.aspx?UniqueId=d0068798-cebe-4ab8-9aeb-437381d95fae",
+        foto: "images/foto2.jpg",
         "descricao": "Doçaria Real é uma confeitaria de renome que se destaca pela excelência na produção de doces de luxo, trazendo o melhor da tradição e inovação em cada fatia de bolo."
     },
     {
@@ -104,7 +104,7 @@ const users = [
         tipo: "Produtor",
         morada: "Rua das Pedras, Nº5, Aveiro, PT",
         TipoNegócio: "Confeitaria",
-        foto: "https://uapt33090-my.sharepoint.com/personal/simaopinto06_ua_pt/_layouts/15/embed.aspx?UniqueId=f2d639cb-e029-4231-aae1-63bd748895c4",
+        foto: "images/foto5.jpg",
         "descricao": "Fábrica de Nata é especializada na criação de irresistíveis pastéis de nata, feitos com uma receita secreta que proporciona um sabor único e inesquecível."
     },
     {
@@ -121,7 +121,7 @@ const users = [
         tipo: "Produtor",
         morada: "Rua Nova, Nº30, Aveiro, PT",
         TipoNegócio: "Confeitaria",
-        foto: "https://uapt33090-my.sharepoint.com/personal/simaopinto06_ua_pt/_layouts/15/embed.aspx?UniqueId=8608cd97-e6e9-4dfb-a11b-78e6da0d6ba3",
+        foto: "images/foto6.jpg",
         "descricao": "Doce Dourado é uma confeitaria focada em oferecer doces de alta qualidade com uma mistura de sabores modernos e tradicionais, buscando sempre agradar aos mais exigentes paladares."
     }
 ];

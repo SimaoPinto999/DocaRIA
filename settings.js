@@ -13,7 +13,12 @@ function loadUserData() {
     console.log(user_index);
     if (user_index != null) {
         profileName.innerText = users[user_index].name || "Usuário";
-        profilePic.src = users[user_index].foto;
+        if (users[user_index].foto == "" || users[user_index].foto == null || users[user_index].foto == undefined) {
+            profilePic.src = "https://via.placeholder.com/150"
+        }
+        else {
+            profilePic.src = users[user_index].foto;
+        }
         document.getElementById("email").value = users[user_index].email || "";
         document.getElementById("address").value = users[user_index].morada || "";
         document.getElementById("password").value = users[user_index].password || "**********";

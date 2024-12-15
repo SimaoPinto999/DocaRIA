@@ -20,16 +20,12 @@
             background-color: #F5F5F5;
         }
 
-        #banner {
+        .banner {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('https://via.placeholder.com/1500x400') no-repeat center center/cover;
             color: white;
             text-align: center;
             padding: 50px 0;
             background-color: #ff6b35;
-        }
-
-        #store-name, #store-type {
-            position: relative;
-            z-index: 1; /* Isso coloca o texto na frente do iframe */
         }
 
         .store-details {
@@ -95,14 +91,13 @@
     <div class="banner mt-5" id="banner">
         <h1 id="store-name" style="font-weight: bold; font-family: 'Pacifico';">Carregando...</h1>
         <h5 id="store-type">Tipo de Negócio: Carregando...</h5>
-        <!-- Substituindo a imagem por um iframe -->
     </div>
     <!-- Loja Detalhes -->
     <div class="container store-details mb-5">
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
-                    <iframe id="store-image" src="https://via.placeholder.com/400" scrolling="no" frameborder="0" style="width: 355px; height: 200px; object-fit: cover;" alt="Não Existe foto" class="card-img-top"></iframe>
+                    <img id="store-image" src="https://via.placeholder.com/400" alt="Não Existe foto" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title fw-bold">Informações da Loja</h5>
                         <br />

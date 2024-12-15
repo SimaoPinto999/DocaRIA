@@ -20,6 +20,7 @@ function loadStoreDetails() {
         console.log("Loja não encontrada!");
     }
     console.log(store);
+    document.getElementById("banner").style.background = `linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('${store.foto}') no-repeat center center/cover`;
     document.getElementById("store-name").innerText = store.name;
     document.getElementById("store-type").innerText = `Tipo de Negócio: ${store.TipoNegócio}`;
     document.getElementById("store-address").innerText = store.morada;
