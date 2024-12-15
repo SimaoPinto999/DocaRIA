@@ -1,7 +1,7 @@
 const clienteRadio = document.getElementById('registerClient');
 const produtorRadio = document.getElementById('registerProdutor');
 const clienteForm = document.getElementById('clienteForm');
-const produtorForm = document.getElementById('produtorForm');
+const produtorForm = document.getElementById('produtorForm'); 
 
 const products = [
     { id: 1, name: "Ovos Moles", price: 5.99, image: "https://receitasdepesos.com.br/wp-content/uploads/2023/07/ovos-moles.jpg", produtor: "Confeitaria Aveirense" },
