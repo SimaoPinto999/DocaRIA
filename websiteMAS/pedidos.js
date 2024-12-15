@@ -53,8 +53,6 @@ users = JSON.parse(localStorage.getItem("users"));
 
 var pedidosFeitos = [];
 
-
-
 const pedidosRecebidos = [
     { cliente: 'João Silva', produto: 'Bolo de Chocolate', quantidade: 3, data: '2024-12-14', status: 'Entregue' },
     { cliente: 'Maria Oliveira', produto: 'Bolo de Morango', quantidade: 2, data: '2024-12-13', status: 'Aguardando pagamento' },

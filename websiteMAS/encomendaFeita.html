@@ -85,7 +85,8 @@
             encomendas.push({
                 pedido: cart,
                 name: users[user_index].name,
-                id: orderId
+                id: orderId,
+                estado: "Em preparo"
             });
             localStorage.setItem('encomendas', JSON.stringify(encomendas));
             console.log("Encomendas = ", encomendas);
