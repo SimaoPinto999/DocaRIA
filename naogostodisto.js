@@ -132,6 +132,69 @@ var clientes = [];
 
 var cart = [];
 
+var encomendas = [
+    {
+        "id": "ORD-001",
+        "cliente": "Junco Juoum",
+        "pedido": [
+            { "id": 1, "name": "Ovos Moles", "quantity": 2, "produtor": "Confeitaria Aveirense", "price": 5.99 },
+            { "id": 10, "name": "Salame de Chocolate", "quantity": 1, "produtor": "Confeitaria Aveirense", "price": 5.00 }
+        ],
+        "total": 16.98,
+        "estado": "Em preparo"
+    },
+    {
+        "id": "ORD-002",
+        "cliente": "Carlos Mendes",
+        "pedido": [
+            { "id": 2, "name": "Pão de Ló", "quantity": 1, "produtor": "Doces da Maria", "price": 7.50 },
+            { "id": 12, "name": "Mousse de Chocolate", "quantity": 3, "produtor": "Doces da Maria", "price": 4.50 }
+        ],
+        "total": 21.00,
+        "estado": "Aguardando pagamento"
+    },
+    {
+        "id": "ORD-003",
+        "cliente": "Ana Silva",
+        "pedido": [
+            { "id": 3, "name": "Bolo Fixolas", "quantity": 1, "produtor": "Zé Dos Bolos", "price": 20.00 },
+            { "id": 4, "name": "Bolo de Cenoura", "quantity": 1, "produtor": "Zé Dos Bolos", "price": 25.00 }
+        ],
+        "total": 45.00,
+        "estado": "Entregue"
+    },
+    {
+        "id": "ORD-004",
+        "cliente": "Beatriz Cunha",
+        pedido: [
+            { "id": 6, "name": "Pastéis de Nata", "quantity": 6, "produtor": "Fábrica de Nata", "price": 1.20 },
+            { "id": 14, "name": "Arroz Doce", "quantity": 2, "produtor": "Fábrica de Nata", "price": 3.50 }
+        ],
+        "total": 15.40,
+        "estado": "Em transporte"
+    },
+    {
+        "id": "ORD-005",
+        "cliente": "Clara Santos",
+        "pedido": [
+            { "id": 7, "name": "Tarte de Amêndoa", "quantity": 1, "produtor": "Doce Dourado", "price": 15.00 },
+            { "id": 13, "name": "Tarte de Limão", "quantity": 2, "produtor": "Doce Dourado", "price": 14.00 }
+        ],
+        "total": 43.00,
+        "estado": "Cancelado"
+    },
+    {
+        "id": "ORD-006",
+        "cliente": "Fernanda Lopes",
+        "pedido": [
+            { "id": 5, "name": "Queijadas de Sintra", "quantity": 4, "produtor": "Doçaria Real", "price": 4.50 },
+            { "id": 8, "name": "Travesseiros de Sintra", "quantity": 3, "produtor": "Doçaria Real", "price": 6.99 }
+        ],
+        "total": 41.47,
+        "estado": "Em preparo"
+    }
+];
+
 let lastScrollY = window.scrollY; // Posição do scroll anterior
     const navbar = document.querySelector('.navbar-main');
 
@@ -280,6 +343,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     localStorage.setItem('cart', JSON.stringify(cart));
     //console.log(localStorage.getItem('cart'));
+
+    localStorage.setItem('encomendas', JSON.stringify(encomendas));
+    console.log("Encomendas = ", encomendas);
 
     console.log(user_index);
     if (user_index != null) {

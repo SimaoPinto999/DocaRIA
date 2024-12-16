@@ -8,7 +8,7 @@ var pedidosFeitos = [];
 
 var pedidosRecebidos = [];
 function filtrarPedidosPedidos(nomeProdutor) {
-    return encomendas.filter(pedido => pedido.name === nomeProdutor);
+    return encomendas.filter(pedido => pedido.cliente === nomeProdutor);
 }
 function logout() {
     console.log("SAI");
@@ -63,7 +63,7 @@ function renderPedidosRecebidos() {
         console.log("Quantidades Produtos = ",quantidadeProdutos);
         row.innerHTML = `
             <td>${pedido.id}</td>
-            <td>${pedido.name}</td>
+            <td>${pedido.cliente}</td>
             <td>${nomeProdutos}</td>
             <td>${quantidadeProdutos}</td>
             <td><span class="badge fw-bold bg-danger">Para fazer...</span></td>
