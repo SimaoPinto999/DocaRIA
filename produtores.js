@@ -21,8 +21,8 @@ function renderProdutores() {
 }
 function logout() {
     console.log("SAI");
-    localStorage.removeItem("user-index"); // Remove os dados do usuário
-    window.location.reload(); // Recarrega a página para atualizar a navbar
+    localStorage.removeItem("user-index");
+    window.location.reload();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,8 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (user_index != null) {
         // Atualiza o navbar com a mensagem de boas-vindas
-        document.getElementById("loginLI").classList.add("d-none"); // Esconde o botão de login
-        document.getElementById("userMenu").classList.remove("d-none"); // Mostra o menu do usuário
+        document.getElementById("loginLI").classList.add("d-none");
+        document.getElementById("userMenu").classList.remove("d-none");
+        document.getElementById("logoNav").style.width = "260px";
         document.getElementById("userMenu").innerHTML = `
           <label class="nav-link text-light" id="welcomeMessage">
               Bem-vindo, ${users[user_index].name}
@@ -40,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   <i class="fa fa-cogs" aria-hidden="true"></i>
               </button>
               <button class="btn btn-secondary btn-sm" onclick="logout()">
-                  <i class="fa fa-sign-out" aria-hidden="true"></i> Sair
+                  <i class="fa fa-sign-out" aria-hidden="true"></i>
               </button>
           </label>`;
     }

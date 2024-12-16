@@ -106,6 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Bem-vindo, produtor:", users[user_index].name);
         document.getElementById("loginLI").classList.add("d-none");
         document.getElementById("userMenu").classList.remove("d-none");
+        document.getElementById("logoNav").style.width = "260px";
         document.getElementById("userMenu").innerHTML = `
         <label class="nav-link text-light" id="welcomeMessage">
             Bem-vindo, ${users[user_index].name}
@@ -113,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <i class="fa fa-cogs" aria-hidden="true"></i>
             </button>
             <button class="btn btn-secondary btn-sm" onclick="logout()">
-                <i class="fa fa-sign-out" aria-hidden="true"></i> Sair
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
             </button>
         </label>`;
     }
