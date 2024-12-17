@@ -1,54 +1,5 @@
-(() => {
-  'use strict'
-
-  // Graphs
-  const ctx = document.getElementById('myChart')
-  // eslint-disable-next-line no-unused-vars
-  const myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: [
-        'Domingo',
-        'Segunda-feira',
-        'Terca-feira',
-        'Quarta-feira',
-        'Quinta-feira',
-        'Sexta-feira',
-        'Sabado'
-      ],
-      datasets: [{
-        data: [
-          15339,
-          21345,
-          18483,
-          24003,
-          23489,
-          24092,
-          12034
-        ],
-        lineTension: 0,
-        backgroundColor: 'transparent',
-        borderColor: '#007bff',
-        borderWidth: 4,
-        pointBackgroundColor: '#007bff'
-      }]
-    },
-    options: {
-      plugins: {
-        legend: {
-          display: false
-        },
-        tooltip: {
-          boxPadding: 3
-        }
-      }
-    }
-  })
-})()
-
 const user_index = JSON.parse(localStorage.getItem("user-index"));
 var users = JSON.parse(localStorage.getItem("users"));
-
 
 
 function goToProdutorPage() {
@@ -65,7 +16,75 @@ function goToProdutorProdutos() {
     window.location.href = pageUrl;
 }
 
+function loadGrafico() {
+    const tempusers = JSON.parse(localStorage.getItem("users"));
+    const produtor = tempusers[user_index].name;
+    const encomendas = JSON.parse(localStorage.getItem("encomendas"));
+    const encomendasDoProdutor = encomendas.filter(encomenda =>
+        encomenda.pedido.some(item => item.produtor === produtor)
+    );
 
+    const produtoFavoritoCount = {};
+
+    encomendasDoProdutor.forEach(encomenda => {
+        encomenda.pedido.forEach(item => {
+            if (item.produtor === produtor) {
+                if (!produtoFavoritoCount[item.name]) {
+                    produtoFavoritoCount[item.name] = 0;
+                }
+                produtoFavoritoCount[item.name] += item.quantity;
+            }
+        });
+    });
+
+    const labels = Object.keys(produtoFavoritoCount);
+    const data = Object.values(produtoFavoritoCount);
+
+    const ctx = document.getElementById('productFavoriteChart').getContext('2d');
+
+    const productFavoriteChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Produtos Favoritos',
+                data: data,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function (tooltipItem) {
+                            return tooltipItem.label + ': ' + tooltipItem.raw + ' unidades';
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
@@ -86,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </button>
             </label>`;
     }
+    loadGrafico();
 });
 
 

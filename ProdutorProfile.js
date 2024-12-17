@@ -6,7 +6,7 @@ const profilePic = document.getElementById("profile-pic");
 const passwordInput = document.getElementById("password");
 
 const user_index = JSON.parse(localStorage.getItem("user-index"));
-var users = JSON.parse(localStorage.getItem("users"));
+var users = [];
 
 function loadUserData() {
     console.log(user_index);
@@ -19,7 +19,6 @@ function loadUserData() {
         document.getElementById("businessType").value = users[user_index].TipoNegócio || "";
         document.getElementById("password").value = users[user_index].password || "**********";
         document.getElementById("conta").value = users[user_index].tipo;
-        document.getElementById("foto").value = users[user_index].foto;
         document.getElementById("descricao").value = users[user_index].descricao;
     } else {
         alert("Nenhum usuário encontrado.");
@@ -32,11 +31,31 @@ function logout() {
     window.location.reload(); // Recarrega a página para atualizar a navbar
 }
 
-// Função para salvar os dados no localStorage
 function saveUserData() {
+    const profilePic = users[user_index].foto;
+    console.log(profilePic);
+    const fotoInput = document.getElementById("foto");
+
+    let base64Image = profilePic.src;
+
+    const file = fotoInput.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            base64Image = event.target.result;
+
+            saveDataToLocalStorage(base64Image);
+        };
+        reader.readAsDataURL(file);
+    } else {
+        saveDataToLocalStorage(base64Image);
+    }
+}
+
+function saveDataToLocalStorage(base64Image) {
     const user = {
-        name: profileName.innerText,
-        foto: document.getElementById("foto").value,
+        name: users[user_index].name,
+        foto: base64Image, 
         email: document.getElementById("email").value,
         morada: document.getElementById("address").value,
         TipoNegócio: document.getElementById("businessType").value,
@@ -45,12 +64,14 @@ function saveUserData() {
         descricao: document.getElementById("descricao").value
     };
 
-    console.log(user);
-    users[user_index] = user;
-    console.log(users);
+    users[user_index] = user
+
     localStorage.setItem("users", JSON.stringify(users));
+
     alert("Detalhes salvos com sucesso!");
+    window.location.reload();
 }
+
 
 // Configurar os botões
 editBtn.addEventListener("click", (e) => {
@@ -97,6 +118,7 @@ function goToProdutorProdutos() {
 // Carregar dados do usuário ao iniciar
 document.addEventListener("DOMContentLoaded", () => {
     const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
+    users = JSON.parse(localStorage.getItem("users"));
 
     if (user_index != null) {
         if (users[user_index].tipo !== "Produtor") {

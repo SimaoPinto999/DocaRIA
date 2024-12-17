@@ -4,10 +4,10 @@ const clienteForm = document.getElementById('clienteForm');
 const produtorForm = document.getElementById('produtorForm'); 
 
 const products = [
-    { id: 1, name: "Ovos Moles", price: 5.99, image: "https://receitasdepesos.com.br/wp-content/uploads/2023/07/ovos-moles.jpg", produtor: "Confeitaria Aveirense" },
-    { id: 2, name: "Pão de Ló", price: 7.50, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqdCBMU3Y1LsU1DWkENmnX0bJTsE0ydcX-dQ&s", produtor: "Doces da Maria" },
-    { id: 3, name: "Bolo Fixolas", price: 20, image: "https://cdnx.jumpseller.com/os-bolos-da-marta/image/52703178/14_14_11zon.webp?1725642309", produtor: "Zé Dos Bolos" },
-    { id: 4, name: "Bolo de Cenoura", price: 25, image: "https://static.itdg.com.br/images/360-240/d290bc79bcad112ee9095604e45eb262/365326-original.jpg", produtor: "Zé Dos Bolos" },
+    { id: 1, name: "Ovos Moles (8 uni.)", price: 5.99, image: "https://receitasdepesos.com.br/wp-content/uploads/2023/07/ovos-moles.jpg", produtor: "Confeitaria Aveirense" },
+    { id: 2, name: "Castanhas de Ovos (6 uni.)", price: 3, image: "https://www.pingodoce.pt/wp-content/uploads/2022/06/castanhas-de-ovos.jpg", produtor: "Confeitaria Aveirense" },
+    { id: 3, name: "Raivas (10 uni.)", price: 2.99, image: "https://www.minigolfe-costanova.pt/wp-content/uploads/2018/12/Receita-Raivas-Aveiro.jpg", produtor: "Confeitaria Aveirense" },
+    { id: 4, name: "Cartuchos (8 uni.)", price: 5.99, image: "https://static.wixstatic.com/media/8024f8_13edb315f6174bf09fd5e214a2f2e1ef~mv2.jpg/v1/fill/w_945,h_546,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/8024f8_13edb315f6174bf09fd5e214a2f2e1ef~mv2.jpg", produtor: "Confeitaria Aveirense" },
     { id: 5, name: "Queijadas de Sintra", price: 4.50, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRkYu0GmtdBsbzX2Fq64eZnDIddi8SvUaUAw&s", produtor: "Doçaria Real" },
     { id: 6, name: "Pastéis de Nata", price: 1.20, image: "https://docerar.pt/wp-content/uploads/2018/03/pasteis-de-nata-1.jpg", produtor: "Fábrica de Nata" },
     { id: 7, name: "Tarte de Amêndoa", price: 15, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk5U-omg4VzX69bMSX93TfX7Gvc6cbx5NzrQ&s", produtor: "Doce Dourado" },
@@ -17,14 +17,17 @@ const products = [
     { id: 11, name: "Brigadeiro", price: 1.50, image: "https://www.receitasnestle.com.br/sites/default/files/srh_recipes/1a884bcbc5b04d71476d2995d51d0140.jpg", produtor: "Zé Dos Bolos" },
     { id: 12, name: "Mousse de Chocolate", price: 4.50, image: "https://www.receitasnestle.com.br/sites/default/files/srh_recipes/369562012750bd46ceaeef5d59a23229.jpg", produtor: "Doces da Maria" },
     { id: 13, name: "Tarte de Limão", price: 14, image: "https://docerar.pt/wp-content/uploads/2023/09/Web_TarteLimao.jpeg.jpg", produtor: "Doce Dourado" },
-    { id: 14, name: "Arroz Doce", price: 3.50, image: "https://receitadaboa.com.br/wp-content/uploads/2024/04/iStock-119394438.jpg", produtor: "Fábrica de Nata" }
+    { id: 14, name: "Arroz Doce", price: 3.50, image: "https://receitadaboa.com.br/wp-content/uploads/2024/04/iStock-119394438.jpg", produtor: "Fábrica de Nata" },
+    { id: 15, name: "Pão de Ló", price: 7.50, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqdCBMU3Y1LsU1DWkENmnX0bJTsE0ydcX-dQ&s", produtor: "Doces da Maria" },
+    { id: 16, name: "Bolo Fixolas", price: 20, image: "https://cdnx.jumpseller.com/os-bolos-da-marta/image/52703178/14_14_11zon.webp?1725642309", produtor: "Zé Dos Bolos" },
+    { id: 17, name: "Bolo de Cenoura", price: 25, image: "https://static.itdg.com.br/images/360-240/d290bc79bcad112ee9095604e45eb262/365326-original.jpg", produtor: "Zé Dos Bolos" }
 ];
 
 const users = [
     {
         email: "cliente@docaria.com",
         password: "123456",
-        name: "Junco Juoum",
+        name: "João Manuel",
         tipo: "Cliente",
         foto: "",
         morada: "Rua Principal, Nº1, Lisboa, PT"
@@ -132,7 +135,7 @@ var clientes = [];
 
 var cart = [];
 
-var encomendas = [
+var encomendasantigas = [
     {
         "id": "ORD-001",
         "cliente": "Junco Juoum",
@@ -181,7 +184,7 @@ var encomendas = [
             { "id": 13, "name": "Tarte de Limão", "quantity": 2, "produtor": "Doce Dourado", "price": 14.00 }
         ],
         "total": 43.00,
-        "estado": "Cancelado"
+        "estado": "Em preparo"
     },
     {
         "id": "ORD-006",
@@ -194,6 +197,337 @@ var encomendas = [
         "estado": "Em preparo"
     }
 ];
+
+var encomendas = [
+    {
+        "id": "ORD-001",
+        "cliente": "João Manuel",
+        "pedido": [
+            {
+                "id": 1,
+                "name": "Ovos Moles (8 uni.)",
+                "quantity": 2,
+                "produtor": "Confeitaria Aveirense",
+                "price": 5.99
+            },
+            {
+                "id": 10,
+                "name": "Salame de Chocolate",
+                "quantity": 1,
+                "produtor": "Confeitaria Aveirense",
+                "price": 5
+            }
+        ],
+        "total": 16.98,
+        "estado": "Em preparo"
+    },
+    {
+        "id": "ORD-002",
+        "cliente": "Carlos Mendes",
+        "pedido": [
+            {
+                "id": 5,
+                "name": "Queijadas de Sintra",
+                "quantity": 3,
+                "produtor": "Doçaria Real",
+                "price": 4.50
+            }
+        ],
+        "total": 13.50,
+        "estado": "Em transporte"
+    },
+    {
+        "id": "ORD-003",
+        "cliente": "Ana Silva",
+        "pedido": [
+            {
+                "id": 15,
+                "name": "Pão de Ló",
+                "quantity": 1,
+                "produtor": "Doces da Maria",
+                "price": 7.50
+            },
+            {
+                "id": 12,
+                "name": "Mousse de Chocolate",
+                "quantity": 2,
+                "produtor": "Doces da Maria",
+                "price": 4.50
+            }
+        ],
+        "total": 17.50,
+        "estado": "Entregue"
+    },
+    {
+        "id": "ORD-004",
+        "cliente": "Beatriz Cunha",
+        "pedido": [
+            {
+                "id": 8,
+                "name": "Travesseiros de Sintra",
+                "quantity": 4,
+                "produtor": "Doçaria Real",
+                "price": 6.99
+            }
+        ],
+        "total": 27.96,
+        "estado": "Em preparo"
+    },
+    {
+        "id": "ORD-005",
+        "cliente": "Clara Santos",
+        "pedido": [
+            {
+                "id": 13,
+                "name": "Tarte de Limão",
+                "quantity": 1,
+                "produtor": "Doce Dourado",
+                "price": 14
+            },
+            {
+                "id": 11,
+                "name": "Brigadeiro",
+                "quantity": 3,
+                "produtor": "Zé Dos Bolos",
+                "price": 1.50
+            }
+        ],
+        "total": 19.50,
+        "estado": "Em preparo"
+    },
+    {
+        "id": "ORD-006",
+        "cliente": "Fernanda Lopes",
+        "pedido": [
+            {
+                "id": 14,
+                "name": "Arroz Doce",
+                "quantity": 4,
+                "produtor": "Fábrica de Nata",
+                "price": 3.50
+            }
+        ],
+        "total": 14.00,
+        "estado": "Em transporte"
+    },
+    {
+        "id": "ORD-007",
+        "cliente": "João Manuel",
+        "pedido": [
+            {
+                "id": 9,
+                "name": "Pudim Flan",
+                "quantity": 2,
+                "produtor": "Doces da Maria",
+                "price": 8.50
+            }
+        ],
+        "total": 17.00,
+        "estado": "Entregue"
+    },
+    {
+        "id": "ORD-008",
+        "cliente": "Carlos Mendes",
+        "pedido": [
+            {
+                "id": 7,
+                "name": "Tarte de Amêndoa",
+                "quantity": 2,
+                "produtor": "Doce Dourado",
+                "price": 15
+            }
+        ],
+        "total": 30.00,
+        "estado": "Em transporte"
+    },
+    {
+        "id": "ORD-009",
+        "cliente": "Ana Silva",
+        "pedido": [
+            {
+                "id": 3,
+                "name": "Raivas (10 uni.)",
+                "quantity": 1,
+                "produtor": "Confeitaria Aveirense",
+                "price": 2.99
+            },
+            {
+                "id": 4,
+                "name": "Cartuchos (8 uni.)",
+                "quantity": 1,
+                "produtor": "Confeitaria Aveirense",
+                "price": 5.99
+            }
+        ],
+        "total": 11.98,
+        "estado": "Em preparo"
+    },
+    {
+        "id": "ORD-010",
+        "cliente": "Beatriz Cunha",
+        "pedido": [
+            {
+                "id": 11,
+                "name": "Brigadeiro",
+                "quantity": 5,
+                "produtor": "Zé Dos Bolos",
+                "price": 1.50
+            }
+        ],
+        "total": 7.50,
+        "estado": "Em preparo"
+    },
+    {
+        "id": "ORD-011",
+        "cliente": "Clara Santos",
+        "pedido": [
+            {
+                "id": 15,
+                "name": "Pão de Ló",
+                "quantity": 3,
+                "produtor": "Doces da Maria",
+                "price": 7.50
+            }
+        ],
+        "total": 22.50,
+        "estado": "Em transporte"
+    },
+    {
+        "id": "ORD-012",
+        "cliente": "Fernanda Lopes",
+        "pedido": [
+            {
+                "id": 2,
+                "name": "Castanhas de Ovos (6 uni.)",
+                "quantity": 3,
+                "produtor": "Confeitaria Aveirense",
+                "price": 3
+            }
+        ],
+        "total": 9.00,
+        "estado": "Em preparo"
+    },
+    {
+        "id": "ORD-013",
+        "cliente": "João Manuel",
+        "pedido": [
+            {
+                "id": 1,
+                "name": "Ovos Moles (8 uni.)",
+                "quantity": 5,
+                "produtor": "Confeitaria Aveirense",
+                "price": 5.99
+            }
+        ],
+        "total": 29.95,
+        "estado": "Em transporte"
+    },
+    {
+        "id": "ORD-014",
+        "cliente": "Carlos Mendes",
+        "pedido": [
+            {
+                "id": 3,
+                "name": "Raivas (10 uni.)",
+                "quantity": 2,
+                "produtor": "Confeitaria Aveirense",
+                "price": 2.99
+            }
+        ],
+        "total": 5.98,
+        "estado": "Entregue"
+    },
+    {
+        "id": "ORD-015",
+        "cliente": "Ana Silva",
+        "pedido": [
+            {
+                "id": 5,
+                "name": "Queijadas de Sintra",
+                "quantity": 6,
+                "produtor": "Doçaria Real",
+                "price": 4.50
+            }
+        ],
+        "total": 27.00,
+        "estado": "Em preparo"
+    },
+    {
+        "id": "ORD-016",
+        "cliente": "Beatriz Cunha",
+        "pedido": [
+            {
+                "id": 6,
+                "name": "Pastéis de Nata",
+                "quantity": 2,
+                "produtor": "Fábrica de Nata",
+                "price": 1.20
+            }
+        ],
+        "total": 2.40,
+        "estado": "Em preparo"
+    },
+    {
+        "id": "ORD-017",
+        "cliente": "Clara Santos",
+        "pedido": [
+            {
+                "id": 8,
+                "name": "Travesseiros de Sintra",
+                "quantity": 3,
+                "produtor": "Doçaria Real",
+                "price": 6.99
+            }
+        ],
+        "total": 20.97,
+        "estado": "Em transporte"
+    },
+    {
+        "id": "ORD-018",
+        "cliente": "Fernanda Lopes",
+        "pedido": [
+            {
+                "id": 16,
+                "name": "Bolo Fixolas",
+                "quantity": 1,
+                "produtor": "Zé Dos Bolos",
+                "price": 20
+            }
+        ],
+        "total": 20.00,
+        "estado": "Em preparo"
+    },
+    {
+        "id": "ORD-019",
+        "cliente": "João Manuel",
+        "pedido": [
+            {
+                "id": 7,
+                "name": "Tarte de Amêndoa",
+                "quantity": 1,
+                "produtor": "Doce Dourado",
+                "price": 15
+            }
+        ],
+        "total": 15.00,
+        "estado": "Entregue"
+    },
+    {
+        "id": "ORD-020",
+        "cliente": "Carlos Mendes",
+        "pedido": [
+            {
+                "id": 9,
+                "name": "Pudim Flan",
+                "quantity": 4,
+                "produtor": "Doces da Maria",
+                "price": 4.50
+            }
+        ],
+        "total": 18.00,
+        "estado": "Em transporte"
+    }
+]
 
 let lastScrollY = window.scrollY; // Posição do scroll anterior
     const navbar = document.querySelector('.navbar-main');
@@ -348,13 +682,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (JSON.parse(localStorage.getItem("cart")) == null || JSON.parse(localStorage.getItem("cart")) == undefined) {
         localStorage.setItem('cart', JSON.stringify(cart));
-        console.log("Fui buscar os produtos aos valores default!");
+        console.log("Fui buscar o carrinho aos valores default!");
     }
     console.log("Cart = ", JSON.parse(localStorage.getItem("cart")));
 
     if (JSON.parse(localStorage.getItem("encomendas")) == null || JSON.parse(localStorage.getItem("encomendas")) == undefined) {
         localStorage.setItem('encomendas', JSON.stringify(encomendas));
-        console.log("Fui buscar os produtos aos valores default!");
+        console.log("Fui buscar as encomendas aos valores default!");
     }
     console.log("Encomendas = ", JSON.parse(localStorage.getItem("encomendas")));
 

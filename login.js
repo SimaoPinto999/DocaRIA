@@ -5,34 +5,10 @@ const produtorForm = document.getElementById('produtorForm');
 
 var users = [];
 
-
-let lastScrollY = window.scrollY; // Posição do scroll anterior
-    const navbar = document.querySelector('.navbar-main');
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > lastScrollY) {
-        // Rolando para baixo: oculta a navbar
-        navbar.classList.add('navbar-hidden');
-      } else {
-        // Rolando para cima: exibe a navbar
-        navbar.classList.remove('navbar-hidden');
-      }
-
-      // Adiciona fundo escuro após rolar
-      if (window.scrollY > 50) {
-        navbar.classList.add('navbar-scrolled');
-      } else {
-        navbar.classList.remove('navbar-scrolled');
-      }
-
-      lastScrollY = window.scrollY; // Atualiza a posição do scroll
-    });
-
-// login
 document.getElementById('loginForm').addEventListener('submit', function (e) {
     e.preventDefault();
-    console.log(typeof users); // Deve retornar "object"
-    console.log(Array.isArray(users)); // Deve retornar "true"
+    console.log(typeof users);
+    console.log(Array.isArray(users));
     const email = document.getElementById('loginemail').value;
     const password = document.getElementById('loginpassword').value;
     const user = users.find(u => u.email === email && u.password === password);
@@ -64,11 +40,10 @@ document.querySelectorAll('input[name="userType"]').forEach(radio => {
     });
 });
 document.getElementById('registerForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Previne o envio padrão do formulário
+    event.preventDefault();
 
     const userType = document.querySelector('input[name="userType"]:checked').value;
 
-    // Função para exibir erros
     function showError(elementId, show) {
         const errorElement = document.getElementById(elementId);
         if (show) {
@@ -79,69 +54,86 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
     }
 
     if (userType === "Cliente") {
-        // Coleta os dados do formulário Cliente
         const clienteName = document.getElementById('registerclienteName').value.trim();
         const clienteMorada = document.getElementById('registerclienteMorada').value.trim();
         const clienteEmail = document.getElementById('registerclienteEmail').value.trim();
         const clientePassword = document.getElementById('registerclientePassword').value.trim();
-        const clienteFoto = document.getElementById('foto').value;
+        const clienteFoto = document.getElementById('resgisterClienteImg');
+        const file = clienteFoto.files[0];
 
-        // Validação
-        let hasError = false;
-        if (clienteName.length < 3) {
-            showError('registerclienteNameError', true);
-            hasError = true;
-        } else {
-            showError('registerclienteNameError', false);
-        }
+        let base64Image = "";
 
-        if (clienteMorada.length < 3) {
-            showError('registerclienteMoradaError', true);
-            hasError = true;
-        } else {
-            showError('registerclienteMoradaError', false);
-        }
-
-        if (clienteEmail.length < 8) {
-            showError('registerclienteEmailError', true);
-            hasError = true;
-        } else {
-            showError('registerclienteEmailError', false);
-        }
-
-        if (clientePassword.length < 5) {
-            showError('registerclientePasswordError', true);
-            hasError = true;
-        } else {
-            showError('registerclientePasswordError', false);
-        }
-
-        if (!hasError) {
-            novo_user = {
-                tipo: userType,
-                name: clienteName,
-                morada: clienteMorada,
-                email: clienteEmail,
-                password: clientePassword,
-                foto: clienteFoto
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                base64Image = event.target.result;
+                salvarCliente();
             };
-            console.log("Registrando produtor:", novo_user);
-
-            var users = JSON.parse(localStorage.getItem('users'));
-            users.push(novo_user);
-            localStorage.setItem('users', JSON.stringify(users));
-            console.log("Users Atualizado = ", JSON.parse(localStorage.getItem('users')));
-            userIndex = users.length - 1;
-            console.log(userIndex);
-            localStorage.setItem("user-index", userIndex);
-
-
-            document.getElementById('RegistoSucesso').classList.remove('d-none');
-            alert("Cliente Registado Com Sucesso!");
-            window.location.href = 'index.html'
+            reader.readAsDataURL(file);
+        } else {
+            salvarCliente();
         }
-        else {
-            alert("Preencha todos os campos obrigatórios para se resgistar");
+        function salvarCliente() {
+            let hasError = false;
+
+            if (clienteName.length < 3) {
+                showError('registerclienteNameError', true);
+                hasError = true;
+            } else {
+                showError('registerclienteNameError', false);
+            }
+
+            if (clienteMorada.length < 3) {
+                showError('registerclienteMoradaError', true);
+                hasError = true;
+            } else {
+                showError('registerclienteMoradaError', false);
+            }
+
+            if (clienteEmail.length < 8) {
+                showError('registerclienteEmailError', true);
+                hasError = true;
+            } else {
+                showError('registerclienteEmailError', false);
+            }
+
+            if (clientePassword.length < 5) {
+                showError('registerclientePasswordError', true);
+                hasError = true;
+            } else {
+                showError('registerclientePasswordError', false);
+            }
+
+            if (!hasError) {
+                const novo_user = {
+                    tipo: userType,
+                    name: clienteName,
+                    morada: clienteMorada,
+                    email: clienteEmail,
+                    password: clientePassword,
+                    foto: base64Image
+                };
+
+                console.log("Registrando cliente:", novo_user);
+
+                let users = JSON.parse(localStorage.getItem('users')) || [];
+
+                users.push(novo_user);
+
+                localStorage.setItem('users', JSON.stringify(users));
+
+                console.log("Users Atualizado:", JSON.parse(localStorage.getItem('users')));
+
+                const userIndex = users.length - 1;
+                console.log("Índice do usuário registrado:", userIndex);
+                localStorage.setItem("user-index", userIndex);
+
+                document.getElementById('RegistoSucesso').classList.remove('d-none');
+                alert("Cliente Registrado com Sucesso!");
+                window.location.href = 'index.html';
+            } else {
+                alert("Preencha todos os campos obrigatórios para se registrar.");
+            }
         }
 
     } else if (userType === "Produtor") {
@@ -150,73 +142,91 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
         const produtorNegocio = document.getElementById('inputNegocio').value;
         const produtorEmail = document.getElementById('registerprodutorEmail').value.trim();
         const produtorPassword = document.getElementById('registerprodutorPassword').value.trim();
-        const produtorFoto = document.getElementById('registerprodutorFoto').value;
+        const produtorFoto = document.getElementById('resgisterProdutorImg');
+        const file = produtorFoto.files[0];
 
-        // Validação
-        let hasError = false;
-        if (produtorName.length < 3) {
-            showError('registerprodutorNameError', true);
-            hasError = true;
-        } else {
-            showError('registerprodutorNameError', false);
-        }
+        let base64ImageProdutor = "";
 
-        if (produtorMorada.length < 3) {
-            showError('registerprodutorMoradaError', true);
-            hasError = true;
-        } else {
-            showError('registerprodutorMoradaError', false);
-        }
-
-        if (produtorNegocio === "...") {
-            showError('registerprodutorNegocioError', true);
-            hasError = true;
-        } else {
-            showError('registerprodutorNegocioError', false);
-        }
-
-        if (produtorEmail.length < 8) {
-            showError('registerprodutorEmailError', true);
-            hasError = true;
-        } else {
-            showError('registerprodutorEmailError', false);
-        }
-
-        if (produtorPassword.length < 5) {
-            showError('registerprodutorPasswordError', true);
-            hasError = true;
-        } else {
-            showError('registerprodutorPasswordError', false);
-        }
-
-        if (!hasError) {
-            // Simula o registro do produtor
-            novo_user = {
-                tipo: userType,
-                name: produtorName,
-                morada: produtorMorada,
-                TipoNegócio: produtorNegocio,
-                email: produtorEmail,
-                password: produtorPassword,
-                foto: produtorFoto
+        // Lê o arquivo de imagem se houver um
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                base64ImageProdutor = event.target.result;
+                salvarProdutor();
             };
-            console.log("Registrando produtor:", novo_user);
-
-            var users = JSON.parse(localStorage.getItem('users'));
-            users.push(novo_user);
-            localStorage.setItem('users', JSON.stringify(users));
-            console.log("Users Atualizado = ", JSON.parse(localStorage.getItem('users')));
-            userIndex = users.length - 1;
-            console.log(userIndex);
-            localStorage.setItem("user-index", userIndex);
-
-            
-            document.getElementById('RegistoSucesso').classList.remove('d-none');
-            alert("Produtor Registado Com Sucesso!");
-            window.location.href = 'index.html'
+            reader.readAsDataURL(file);
         }
         else {
-            alert("Preencha todos os campos obrigatórios para se resgistar");
+            salvarProdutor();
+        }
+        function salvarProdutor() {
+            let hasError = false;
+
+            if (produtorName.length < 3) {
+                showError('registerprodutorNameError', true);
+                hasError = true;
+            } else {
+                showError('registerprodutorNameError', false);
+            }
+
+            if (produtorMorada.length < 3) {
+                showError('registerprodutorMoradaError', true);
+                hasError = true;
+            } else {
+                showError('registerprodutorMoradaError', false);
+            }
+
+            if (produtorNegocio === "...") {
+                showError('registerprodutorNegocioError', true);
+                hasError = true;
+            } else {
+                showError('registerprodutorNegocioError', false);
+            }
+
+            if (produtorEmail.length < 8) {
+                showError('registerprodutorEmailError', true);
+                hasError = true;
+            } else {
+                showError('registerprodutorEmailError', false);
+            }
+
+            if (produtorPassword.length < 5) {
+                showError('registerprodutorPasswordError', true);
+                hasError = true;
+            } else {
+                showError('registerprodutorPasswordError', false);
+            }
+
+
+
+            if (!hasError) {
+                novo_user = {
+                    tipo: userType,
+                    name: produtorName,
+                    morada: produtorMorada,
+                    TipoNegócio: produtorNegocio,
+                    email: produtorEmail,
+                    password: produtorPassword,
+                    foto: base64ImageProdutor
+                };
+                console.log("Registrando produtor:", novo_user);
+
+                var users = JSON.parse(localStorage.getItem('users'));
+                users.push(novo_user);
+                localStorage.setItem('users', JSON.stringify(users));
+                console.log("Users Atualizado = ", JSON.parse(localStorage.getItem('users')));
+                userIndex = users.length - 1;
+                console.log(userIndex);
+                localStorage.setItem("user-index", userIndex);
+
+
+                document.getElementById('RegistoSucesso').classList.remove('d-none');
+                alert("Produtor Registado Com Sucesso!");
+                window.location.href = 'index.html';
+            }
+            else {
+                alert("Preencha todos os campos obrigatórios para se resgistar");
+            }
         }
     }
 });
@@ -226,5 +236,4 @@ function renderPage() {
     console.log(users);
 }
 
-// Inicializar produtos
 document.addEventListener('DOMContentLoaded', renderPage());

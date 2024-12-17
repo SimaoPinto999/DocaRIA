@@ -19,6 +19,25 @@
                 background-color: #F5F5F5;
             }
 
+            .dashboard-section {
+                margin-top: 30px;
+            }
+
+            .feedback-section,
+            .campaigns-section {
+                margin-bottom: 30px;
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                background-color: #f9f9f9;
+            }
+
+                .feedback-section h3,
+                .campaigns-section h3 {
+                    font-size: 1.5rem;
+                    margin-bottom: 15px;
+                }
+
             .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
@@ -217,7 +236,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="btn nav-link d-flex align-items-center gap-2" href="#">
+                                    <a class="btn nav-link d-flex align-items-center gap-2" href="tendencias.html">
                                         <svg class="bi"><use xlink:href="#graph-up" /></svg>
                                         Tendências
                                     </a>
@@ -236,30 +255,36 @@
                     </div>
                 </div>
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                        <h2 class="fw-bold">Dashboard</h2>
-                        <div class="btn-toolbar mb-2 mb-md-0">
-                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
-                                <svg class="bi"><use xlink:href="#calendar3" /></svg>
-                                Esta semana
-                            </button>
+                    <div class="container">
+                        <div class="dashboard-section">
+                            <h2 class="fw-bold">Painel de Controlo</h2>
+                            <hr />
+                            <div class="feedback-section">
+                                <h3 class="fw-bold">Avaliações Recentes</h3>
+                                <ul>
+                                    <li>
+                                        <strong>Ovos Moles</strong> - Carlos Mendes: <span>⭐⭐⭐⭐⭐</span>
+                                        <p>"Excelente! Muito saborosos, definitivamente voltarei a comprar."</p>
+                                    </li>
+                                    <li>
+                                        <strong>Pastéis de Nata</strong> - Ana Silva: <span>⭐⭐⭐⭐</span>
+                                        <p>"Estavam bons, mas poderiam ter mais recheio."</p>
+                                    </li>
+                                    <li>
+                                        <strong>Salame de Chocolate</strong> - João Manuel: <span>⭐⭐⭐</span>
+                                        <p>"Bom, mas o preço é elevado para a qualidade."</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="campaigns-section">
+                                <h3 class="fw-bold">Campanhas Ativas</h3>
+                                <ul>
+                                    <li><strong>Promoção de Natal</strong> - Desconto de 20%. Código: NATAL20</li>
+                                    <li><strong>Desconto de Boas-Vindas</strong> - 10% para novos clientes. Código: BEMVINDO10</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
 
-                    <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-
-                    <h2 class="fw-bold">Atividade recente:</h2>
-                    <div class="table-responsive small mb-5">
-                        <table class="table table-striped table-sm">
-                            <thead>
-                                <tr>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </main>
             </div>
@@ -278,6 +303,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="dashboard.js"></script>
     </body>
 </html>

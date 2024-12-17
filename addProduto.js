@@ -32,12 +32,30 @@ function loadProducts(produtor) {
 
 function addProduct(event) {
     event.preventDefault();
+    const productImageInput = document.getElementById("foto");
+    const file = productImageInput.files[0];
+
+    let base64Image = null;
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            base64Image = event.target.result;
+            saveProductData(base64Image);
+        };
+        reader.readAsDataURL(file);
+    } else {
+        saveProductData(base64Image);
+    }
+}
+
+function saveProductData(base64Image) {
     const produtor = getQueryParam("id");
     const newProduct = {
         id: produtos.length + 1,
         name: document.getElementById("productName").value,
         price: parseFloat(document.getElementById("productPrice").value),
-        image: document.getElementById("productImage").value,
+        image: base64Image,
         produtor: produtor,
     };
 

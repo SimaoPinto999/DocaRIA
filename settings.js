@@ -6,7 +6,7 @@ const profilePic = document.getElementById("profile-pic");
 const passwordInput = document.getElementById("password");
 
 const user_index = JSON.parse(localStorage.getItem("user-index"));
-var users = JSON.parse(localStorage.getItem("users"));
+var users = [];
 
 
 function loadUserData() {
@@ -32,31 +32,46 @@ function loadUserData() {
 
 function logout() {
     console.log("SAI");
-    localStorage.removeItem("user-index"); // Remove os dados do usuário
-    window.location.reload(); // Recarrega a página para atualizar a navbar
+    localStorage.removeItem("user-index");
+    alert("Saíste da tua conta com sucesso!");
+    window.location.href = "login.html"
 }
 
-    // Função para salvar os dados no localStorage
 function saveUserData() {
+    const profilePic = users[user_index].foto;
+    const fotoInput = document.getElementById("foto");
+
+    let base64Image = profilePic;
+    const file = fotoInput.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            base64Image = event.target.result;
+            saveDataToLocalStorage(base64Image);
+        };
+        reader.readAsDataURL(file);
+    } else {
+        saveDataToLocalStorage(base64Image);
+    }
+}
+
+function saveDataToLocalStorage(base64Image) {
     const user = {
-        name: profileName.innerText,
-        foto: profilePic.src,
+        name: users[user_index].name,
+        foto: base64Image,
         email: document.getElementById("email").value,
         morada: document.getElementById("address").value,
         password: document.getElementById("password").value,
-        tipo: document.getElementById("conta").value,
-        foto: document.getElementById("foto").value
+        tipo: document.getElementById("conta").value
     };
 
-    console.log(user);
     users[user_index] = user;
-    console.log(users);
     localStorage.setItem("users", JSON.stringify(users));
     alert("Detalhes salvos com sucesso!");
     window.location.reload();
 }
 
-        // Configurar os botões
 editBtn.addEventListener("click", (e) => {
     e.preventDefault();
     const isEditing = editBtn.innerText === "Salvar";
@@ -81,9 +96,9 @@ logoutBtn.addEventListener("click", (e) => {
     }
 });
 
-        // Carregar dados do usuário ao iniciar
 document.addEventListener("DOMContentLoaded", () => {
-    const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
+    const user_index = JSON.parse(localStorage.getItem("user-index"));
+    users = JSON.parse(localStorage.getItem("users"));
 
     if (users[user_index].tipo == "Produtor") {
         window.location.href = "produtorProfile.html";

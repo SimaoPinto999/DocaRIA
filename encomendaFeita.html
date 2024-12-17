@@ -90,7 +90,7 @@
             const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
             encomendas.push({
                 pedido: cart,
-                name: users[user_index].name,
+                cliente: users[user_index].name,
                 id: orderId,
                 estado: "Em preparo"
             });

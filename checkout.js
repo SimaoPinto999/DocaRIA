@@ -62,16 +62,26 @@ function loadCartForCheckout() {
         `;
 
         promoButton.addEventListener('click', () => {
+
             const promoCode = promoInput.value.trim();
-            if (promoCode === "FREE" && !discountApplied) {
+
+            if (promoCode === "NATAL20" && !discountApplied) {
+                total *= 0.8;
+                document.getElementById('cart-total').innerText = `${total.toFixed(2)}`;
+                discountApplied = true;
+                erroCodigo.classList.add('d-none');
+
+            } else if (promoCode === "BEMVINDO10" && !discountApplied) {
                 total *= 0.9;
                 document.getElementById('cart-total').innerText = `${total.toFixed(2)}`;
                 discountApplied = true;
-                document.getElementById('erroCodigo').classList.add('d-none');
+                erroCodigo.classList.add('d-none');
+
             } else if (discountApplied) {
-                alert("A promoção já foi aplicada!");
+                alert("A promocao ja foi aplicada!");
+
             } else {
-                document.getElementById('erroCodigo').classList.remove('d-none');
+                erroCodigo.classList.remove('d-none');
             }
         });
     }
@@ -127,6 +137,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     <i class="fa fa-sign-out" aria-hidden="true"></i>
                 </button>
             </label>`;
+    }
+    else {
+        alert("Tens de te registar para continuar o teu pedido!");
+        window.location.href = "login.html";
     }
     loadCartForCheckout();
 });
