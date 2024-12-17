@@ -63,85 +63,6 @@ document.querySelectorAll('input[name="userType"]').forEach(radio => {
         }
     });
 });
-
-
-function validarRegisterCliente(){
-    const nome = document.getElementById('registerclienteName').value.trim();
-    const email = document.getElementById('registerclienteEmail').value.trim();
-    const password = document.getElementById('registerclientePassword').value.trim();
-    let Valido = true;
-
-    //console.log(nome);
-    //console.log(email);
-    //console.log(password);
-
-    if(nome.length < 3){
-        Valido = false;
-        document.getElementById('registerclienteNameError').classList.remove('d-none');
-    } else {
-        document.getElementById('registerclienteNameError').classList.add('d-none');
-    }
-
-    if(email.length < 8){
-        Valido = false;
-        document.getElementById('registerclienteEmailError').classList.remove('d-none');
-    } else {
-        document.getElementById('registerclienteEmailError').classList.add('d-none');
-    }
-
-    if(password.length < 5){
-        Valido = false;
-        document.getElementById('registerclientePasswordError').classList.remove('d-none');
-    } else {
-        document.getElementById('registerclientePasswordError').classList.add('d-none');
-    }
-
-    return Valido
-}
-
-function validarRegisterProdutor(){
-    const nome = document.getElementById('registerprodutorName').value.trim();
-    const tipo = document.getElementById('inputNegocio').value;
-    const email = document.getElementById('registerprodutorEmail').value.trim();
-    const password = document.getElementById('registerprodutorPassword').value.trim();
-    let Valido = true;
-
-    console.log(tipo);
-    //console.log(nome);
-    //console.log(email);
-    //console.log(password);
-
-    if(nome.length < 3){
-        Valido = false;
-        document.getElementById('registerprodutorNameError').classList.remove('d-none');
-    } else {
-        document.getElementById('registerprodutorNameError').classList.add('d-none');
-    }
-
-    if(tipo == "..."){
-        Valido = false;
-        document.getElementById('registerprodutorNegocioError').classList.remove('d-none');
-    } else {
-        document.getElementById('registerprodutorNegocioError').classList.add('d-none');
-    }
-
-    if(email.length < 8){
-        Valido = false;
-        document.getElementById('registerprodutorEmailError').classList.remove('d-none');
-    } else {
-        document.getElementById('registerprodutorEmailError').classList.add('d-none');
-    }
-
-    if(password.length < 5){
-        Valido = false;
-        document.getElementById('registerprodutorPasswordError').classList.remove('d-none');
-    } else {
-        document.getElementById('registerprodutorPasswordError').classList.add('d-none');
-    }
-
-    return Valido
-}
-
 document.getElementById('registerForm').addEventListener('submit', function (event) {
     event.preventDefault(); // Previne o envio padrão do formulário
 
@@ -219,6 +140,9 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
             alert("Cliente Registado Com Sucesso!");
             window.location.href = 'index.html'
         }
+        else {
+            alert("Preencha todos os campos obrigatórios para se resgistar");
+        }
 
     } else if (userType === "Produtor") {
         const produtorName = document.getElementById('registerprodutorName').value.trim();
@@ -290,6 +214,9 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
             document.getElementById('RegistoSucesso').classList.remove('d-none');
             alert("Produtor Registado Com Sucesso!");
             window.location.href = 'index.html'
+        }
+        else {
+            alert("Preencha todos os campos obrigatórios para se resgistar");
         }
     }
 });

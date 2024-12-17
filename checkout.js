@@ -2,19 +2,16 @@ function validateForm() {
     (() => {
         'use strict';
 
-        // Seleciona todos os formulários que requerem validação
         const forms = document.querySelectorAll('.needs-validation');
 
-        // Adiciona evento de validação em cada formulário
         Array.from(forms).forEach(form => {
             form.addEventListener('submit', event => {
                 if (!form.checkValidity()) {
-                    // Impede o envio do formulário se for inválido
                     event.preventDefault();
                     event.stopPropagation();
+                    alert("Preencha todos os campos obrigatorios para concluir a compra");
                 } else {
-                    // Apenas redireciona se o formulário for válido
-                    event.preventDefault(); // Evita envio padrão
+                    event.preventDefault();
                     window.location.href = "encomendaFeita.html";
                 }
 

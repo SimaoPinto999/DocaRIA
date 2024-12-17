@@ -94,6 +94,9 @@ function executarBusca(event) {
     );
     indexs = updateIndexes(produtosFiltrados);
     console.log("Indexs = ", indexs);
+    if (produtosFiltrados.length == 0) {
+        alert("Não foram encontrados produtos correspondentes à pesquisa");
+    }
     renderProductsAtualizado(produtosFiltrados);
 }
 

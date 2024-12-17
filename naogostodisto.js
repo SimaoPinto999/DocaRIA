@@ -322,6 +322,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Fui buscar os users aos valores default!");
     }
 
+
     tempusers = JSON.parse(localStorage.getItem("users"));
     console.log("Users = ",JSON.parse(localStorage.getItem("users")));
 
@@ -335,17 +336,27 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem('produtores', JSON.stringify(produtores));
     localStorage.setItem('clientes', JSON.stringify(clientes));
 
-    //console.log(localStorage.getItem('products'));
+    
     //console.log(localStorage.getItem('produtores'));
 
-    localStorage.setItem('products', JSON.stringify(products));
-    //console.log(localStorage.getItem('produtores'));
+    if (JSON.parse(localStorage.getItem("products")) == null || JSON.parse(localStorage.getItem("products")) == undefined) {
+        localStorage.setItem('products', JSON.stringify(products));
+        console.log("Fui buscar os produtos aos valores default!");
+    }
+    console.log("Produtos = ", JSON.parse(localStorage.getItem("products")));
 
-    localStorage.setItem('cart', JSON.stringify(cart));
-    //console.log(localStorage.getItem('cart'));
 
-    localStorage.setItem('encomendas', JSON.stringify(encomendas));
-    console.log("Encomendas = ", encomendas);
+    if (JSON.parse(localStorage.getItem("cart")) == null || JSON.parse(localStorage.getItem("cart")) == undefined) {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        console.log("Fui buscar os produtos aos valores default!");
+    }
+    console.log("Cart = ", JSON.parse(localStorage.getItem("cart")));
+
+    if (JSON.parse(localStorage.getItem("encomendas")) == null || JSON.parse(localStorage.getItem("encomendas")) == undefined) {
+        localStorage.setItem('encomendas', JSON.stringify(encomendas));
+        console.log("Fui buscar os produtos aos valores default!");
+    }
+    console.log("Encomendas = ", JSON.parse(localStorage.getItem("encomendas")));
 
     console.log(user_index);
     if (user_index != null) {
@@ -355,7 +366,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("userMenu").classList.remove("d-none");
         document.getElementById("userMenu").innerHTML = `
             <label class="nav-link text-light" id="welcomeMessage">
-                Olá, ${tempusers[user_index].name}
+                Bem vindo, ${tempusers[user_index].name}
                 <button class="btn btn-secondary btn-sm" onclick= "window.location.href = 'settings.html'">
                   <i class="fa fa-cogs" aria-hidden="true"></i>
                 </button>
