@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
-<html lang="pt">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DoçaRIA - Marketplace de Doçaria Tradicional</title>
-    <link rel="icon" href="images/logo DoçaRIA.jpg" type="image/icon type">
+    <link rel="icon" href="images/logoUpdated.png" type="image/icon type">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
@@ -14,75 +14,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="detailsindex.css">
     <style>
         body {
             font-family: "Commissioner";
             background-color: #F5F5F5;
-            padding-top: 70px;
         }
-
-        .profile-header {
-            text-align: center;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-            .profile-header img {
-                width: 150px;
-                height: 150px;
-                border-radius: 50%;
-                border: 4px solid #ff6b35;
-            }
-
-            .profile-header h1 {
-                font-size: 1.5em;
-                margin: 10px 0;
-                color: #333;
-            }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-            .form-group label {
-                display: block;
-                font-weight: bold;
-                margin-bottom: 5px;
-                color: #555;
-            }
-
-            .form-group input {
-                width: 100%;
-                padding: 10px;
-                border: 1px solid #ddd;
-                border-radius: 5px;
-                background-color: #f9f9f9;
-                color: #333;
-                pointer-events: none; /* Campos inicialmente não editáveis */
-            }
-
-                .form-group input.editable {
-                    background-color: #ffffff;
-                    pointer-events: auto; /* Torna os campos editáveis */
-                }
-
-        .options {
-            margin-top: 20px;
-            border-top: 1px solid #ddd;
-            padding-top: 15px;
-        }
-
-            .options a {
-                display: block;
-                text-decoration: none;
-                color: #555;
-                padding: 10px 0;
-                border-bottom: 1px solid #eee;
-            }
-
-                .options a:hover {
-                    color: #ff6b35;
-                }
     </style>
 </head>
 <body>
@@ -94,7 +31,7 @@
             <div class="container d-flex justify-content-between align-items-center">
                 <div class="navbar-brand" id="logoNav">
                     <a class="navbar-brand" style="font-family: 'Pacifico';">
-                        <img src="images/logoUpdated.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+                        <img src="images/logoUpdated.png" width="30" height="30" class="d-inline-block align-top" alt="">
                         DoçaRIA
                     </a>
                 </div>
@@ -114,51 +51,9 @@
             </div>
         </div>
     </nav>
-    <div class="container">
-        <div class="profile-header">
-            <img id="profile-pic" src="https://via.placeholder.com/150" alt="Profile Picture">
-            <h1 id="profile-name">Carregando...</h1>
-        </div>
 
-        <form id="accountForm">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" value="">
-            </div>
-            <div class="form-group">
-                <label for="address">Morada de Envio</label>
-                <input type="text" id="address" value="">
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" value="">
-            </div>
-            <div class="form-group">
-                <label for="conta">Tipo de Conta:</label>
-                <input type="text" id="conta" value="" disabled>
-            </div>
-            <div class="form-group">
-                <label for="foto">Foto:</label>
-                <input type="file" id="foto" accept="image/*" />
-            </div>
-            <div class="row">
-                <div class="col-md-2 mx-3">
-                    <div class="row">
-                        <button class="btn btn-success" id="editBtn">Editar</button>
-                    </div>
-                </div>
-                <div class="col-md-2 mx-2">
-                    <div class="row">
-                        <button class="btn btn-danger" id="logoutBtn">Voltar</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <div class="options mb-5">
-            <a class="btn" href="#">Histórico de Encomendas</a>
-            <a class="btn" href="#">Tornar-me Vendedor</a>
-        </div>
-    </div>
+
+
     <nav class="navbar bg-body-tertiary border-top" style="background-color: #d42e2e;">
         <div class="container small">
             <div class="navbar-text" style="color: white;">&copy;  DoçaRIA - MAS 2024/25</div>
@@ -168,11 +63,11 @@
             </div>
         </div>
     </nav>
+
     <!-- JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-    <script src="settings.js"></script>
 </body>
 </html>

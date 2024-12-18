@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
-<html lang="pt">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DoçaRIA - Marketplace de Doçaria Tradicional</title>
-    <link rel="icon" href="images/logo DoçaRIA.jpg" type="image/icon type">
+    <link rel="icon" href="images/logoUpdated.png" type="image/icon type">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
@@ -14,75 +14,43 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="detailsindex.css">
     <style>
         body {
             font-family: "Commissioner";
             background-color: #F5F5F5;
-            padding-top: 70px;
+            padding-top: 50px;
+        }
+        h1, h2 {
+            font-family: 'Pacifico', cursive;
+            color: #ff6b35;
         }
 
-        .profile-header {
-            text-align: center;
-            margin-bottom: 20px;
+        .image-text-container {
             position: relative;
+            height: 400px;
         }
 
-            .profile-header img {
-                width: 150px;
-                height: 150px;
-                border-radius: 50%;
-                border: 4px solid #ff6b35;
-            }
-
-            .profile-header h1 {
-                font-size: 1.5em;
-                margin: 10px 0;
-                color: #333;
-            }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-            .form-group label {
-                display: block;
-                font-weight: bold;
-                margin-bottom: 5px;
-                color: #555;
-            }
-
-            .form-group input {
+            .image-text-container img {
                 width: 100%;
-                padding: 10px;
-                border: 1px solid #ddd;
-                border-radius: 5px;
-                background-color: #f9f9f9;
-                color: #333;
-                pointer-events: none; /* Campos inicialmente não editáveis */
+                height: 100%;
+                object-fit: cover;
             }
 
-                .form-group input.editable {
-                    background-color: #ffffff;
-                    pointer-events: auto; /* Torna os campos editáveis */
-                }
-
-        .options {
-            margin-top: 20px;
-            border-top: 1px solid #ddd;
-            padding-top: 15px;
+        .text-overlay {
+            position: absolute;
+            top: 20%;
+            left: 0;
+            width: 60%;
+            padding: 20px;
+            background-color: rgb(155, 154, 149, 0.85);
+            color: white;
+            z-index: 2;
         }
 
-            .options a {
-                display: block;
-                text-decoration: none;
-                color: #555;
-                padding: 10px 0;
-                border-bottom: 1px solid #eee;
+            .text-overlay h2 {
+                color: #ff6b35;
             }
-
-                .options a:hover {
-                    color: #ff6b35;
-                }
     </style>
 </head>
 <body>
@@ -94,7 +62,7 @@
             <div class="container d-flex justify-content-between align-items-center">
                 <div class="navbar-brand" id="logoNav">
                     <a class="navbar-brand" style="font-family: 'Pacifico';">
-                        <img src="images/logoUpdated.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+                        <img src="images/logoUpdated.png" width="30" height="30" class="d-inline-block align-top" alt="">
                         DoçaRIA
                     </a>
                 </div>
@@ -114,51 +82,37 @@
             </div>
         </div>
     </nav>
-    <div class="container">
-        <div class="profile-header">
-            <img id="profile-pic" src="https://via.placeholder.com/150" alt="Profile Picture">
-            <h1 id="profile-name">Carregando...</h1>
-        </div>
 
-        <form id="accountForm">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" value="">
-            </div>
-            <div class="form-group">
-                <label for="address">Morada de Envio</label>
-                <input type="text" id="address" value="">
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" value="">
-            </div>
-            <div class="form-group">
-                <label for="conta">Tipo de Conta:</label>
-                <input type="text" id="conta" value="" disabled>
-            </div>
-            <div class="form-group">
-                <label for="foto">Foto:</label>
-                <input type="file" id="foto" accept="image/*" />
-            </div>
-            <div class="row">
-                <div class="col-md-2 mx-3">
-                    <div class="row">
-                        <button class="btn btn-success" id="editBtn">Editar</button>
-                    </div>
-                </div>
-                <div class="col-md-2 mx-2">
-                    <div class="row">
-                        <button class="btn btn-danger" id="logoutBtn">Voltar</button>
-                    </div>
+    <div class="container mb-5 mt-4" style="min-height: 550px;">
+        <div class="text-center mb-4">
+            <h1 class="fw-bold">Sustentabilidade...</h1>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-12 image-text-container">
+                <img src="images/sustentabilidade.jpg" alt="Sustentabilidade">
+                <br />
+                <div class="text-overlay">
+                    <h2 class="fw-bold" style="color: white">Compromisso com o Futuro</h2>
+                    <hr />
+                    <p>
+                        A <strong>DoçaRIA</strong> está comprometida com práticas sustentáveis que respeitam o meio ambiente e promovem o bem-estar da nossa comunidade.
+                        Trabalhamos arduamente para reduzir impactos ambientais ao máximo, incentivando produtores que compartilham esses valores e adotam métodos ecológicos.
+                    </p>
+                    <p>As nossas ações incluem:</p>
+                    <ul>
+                        <li>Embalagens recicláveis e biodegradáveis para todos os produtos.</li>
+                        <li>Redução de desperdício alimentar com produção sob demanda e controlada.</li>
+                        <li>Recompensas regulares a produtores locais que utilizam práticas sustentáveis.</li>
+                    </ul>
+                    <p>
+                        Com a tua escolha consciente, contribuis para um planeta mais verde e sustentável. Juntos, podemos criar um impacto positivo!
+                    </p>
                 </div>
             </div>
-        </form>
-        <div class="options mb-5">
-            <a class="btn" href="#">Histórico de Encomendas</a>
-            <a class="btn" href="#">Tornar-me Vendedor</a>
         </div>
     </div>
+    <hr />
     <nav class="navbar bg-body-tertiary border-top" style="background-color: #d42e2e;">
         <div class="container small">
             <div class="navbar-text" style="color: white;">&copy;  DoçaRIA - MAS 2024/25</div>
@@ -168,11 +122,11 @@
             </div>
         </div>
     </nav>
+
     <!-- JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-    <script src="settings.js"></script>
 </body>
 </html>

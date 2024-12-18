@@ -143,6 +143,7 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
         const produtorEmail = document.getElementById('registerprodutorEmail').value.trim();
         const produtorPassword = document.getElementById('registerprodutorPassword').value.trim();
         const produtorFoto = document.getElementById('resgisterProdutorImg');
+        const produtorDescricao = document.getElementById('registerprodutorDescrição').value.trim();
         const file = produtorFoto.files[0];
 
         let base64ImageProdutor = "";
@@ -197,7 +198,9 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
                 showError('registerprodutorPasswordError', false);
             }
 
-
+            if (produtorDescricao == null || produtorDescricao == "") {
+                produtorDescricao = "Sem informação.";
+            }
 
             if (!hasError) {
                 novo_user = {
@@ -207,7 +210,8 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
                     TipoNegócio: produtorNegocio,
                     email: produtorEmail,
                     password: produtorPassword,
-                    foto: base64ImageProdutor
+                    foto: base64ImageProdutor,
+                    descricao: produtorDescricao
                 };
                 console.log("Registrando produtor:", novo_user);
 
