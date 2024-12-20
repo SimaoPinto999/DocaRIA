@@ -35,7 +35,6 @@ function loadCartForCheckout() {
         const cart = JSON.parse(savedCart);
         cartList.innerHTML = '';
 
-        // Renderiza os itens do carrinho
         cart.forEach((item, index) => {
             total += item.price * item.quantity;
             itemCount += item.quantity;
@@ -99,8 +98,8 @@ function loadCartForCheckout() {
 
 function logout() {
     console.log("SAI");
-    localStorage.removeItem("user-index"); // Remove os dados do usuário
-    window.location.reload(); // Recarrega a página para atualizar a navbar
+    localStorage.removeItem("user-index");
+    window.location.reload(); 
 }
 function updateQuantity(index, delta) {
     const savedCart = localStorage.getItem('cart');
@@ -108,12 +107,10 @@ function updateQuantity(index, delta) {
         const cart = JSON.parse(savedCart);
         cart[index].quantity += delta;
 
-        // Remove o item se a quantidade for 0 ou menor
         if (cart[index].quantity <= 0) {
             cart.splice(index, 1);
         }
 
-        // Atualiza o localStorage e recarrega o carrinho
         localStorage.setItem('cart', JSON.stringify(cart));
         loadCartForCheckout();
     }
@@ -121,7 +118,7 @@ function updateQuantity(index, delta) {
 
 document.addEventListener("DOMContentLoaded", () => {
     const user_index = JSON.parse(localStorage.getItem("user-index"));
-    users = JSON.parse(localStorage.getItem("users")); // Recupera o usuário do localStorage
+    users = JSON.parse(localStorage.getItem("users"));
 
     if (user_index != null) {
         document.getElementById("loginLI").classList.add("d-none");

@@ -45,16 +45,16 @@
             object-fit: cover;
         }
         .btn-checkout {
-            background-color: #E67E22; /* Laranja suave */
+            background-color: #E67E22;
             color: white;
             border: none;
         }
 
             .btn-checkout:hover {
-                background-color: #D35400; /* Laranja mais intenso */
+                background-color: #D35400;
             }
         .btn-primary:hover {
-            background-color: #21618C; /* Azul mais escuro */
+            background-color: #21618C;
         }
         .form-control {
             border: 1px solid #BDC3C7;
@@ -62,7 +62,7 @@
         }
 
             .form-control:focus {
-                border-color: #2980B9; /* Azul */
+                border-color: #2980B9;
                 box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
             }
     </style>
@@ -102,11 +102,10 @@
                 <h1 class="fw-bold" style="font-family: 'Pacifico'; color: #ff6b35;">Produtos em Destaque</h1>
             </div>
             <hr>
-            <!-- Barra de Filtros -->
             <div class="row mb-4">
                 <div class="col-md-3">
                     <select id="filter-maker" class="form-select">
-                        <!-- As opções serão carregadas dinamicamente pelo JavaScript -->
+                        
                     </select>
                 </div>
                 <div class="col-md-3">
@@ -143,14 +142,12 @@
                 </form>
             </div>
             <hr />
-            <!-- Lista de Produtos -->
             <div class="row" id="product-list">
-                <!-- Produtos serão adicionados dinamicamente -->
+
             </div>
             <hr class="mb-5"/>
         </section>
     </div>
-    <!-- Carrinho Modal -->
     <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -160,7 +157,7 @@
                 </div>
                 <div class="modal-body">
                     <ul class="list-group" id="cartItems">
-                        <!-- Itens do carrinho serão adicionados dinamicamente -->
+                        
                     </ul>
                 </div>
                 <div class="modal-footer">

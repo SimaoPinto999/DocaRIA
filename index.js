@@ -529,28 +529,24 @@ var encomendas = [
     }
 ]
 
-let lastScrollY = window.scrollY; // Posição do scroll anterior
+let lastScrollY = window.scrollY;
     const navbar = document.querySelector('.navbar-main');
 
     window.addEventListener('scroll', () => {
       if (window.scrollY > lastScrollY) {
-        // Rolando para baixo: oculta a navbar
         navbar.classList.add('navbar-hidden');
       } else {
-        // Rolando para cima: exibe a navbar
         navbar.classList.remove('navbar-hidden');
       }
 
-      // Adiciona fundo escuro após rolar
       if (window.scrollY > 50) {
         navbar.classList.add('navbar-scrolled');
       } else {
         navbar.classList.remove('navbar-scrolled');
       }
 
-      lastScrollY = window.scrollY; // Atualiza a posição do scroll
+      lastScrollY = window.scrollY;
     });
-// login
 
 document.querySelectorAll('input[name="userType"]').forEach(radio => {
     radio.addEventListener('change', (e) => {
@@ -570,10 +566,6 @@ function validarRegisterCliente(){
     const email = document.getElementById('registerclienteEmail').value.trim();
     const password = document.getElementById('registerclientePassword').value.trim();
     let Valido = true;
-
-    //console.log(nome);
-    //console.log(email);
-    //console.log(password);
 
     if(nome.length < 3){
         Valido = false;
@@ -602,8 +594,8 @@ function validarRegisterCliente(){
 
 function logout() {
     console.log("SAI");
-    localStorage.removeItem("user-index"); // Remove os dados do usuário
-    window.location.reload(); // Recarrega a página para atualizar a navbar
+    localStorage.removeItem("user-index");
+    window.location.reload();
 }
 
 
@@ -649,7 +641,7 @@ function validarRegisterProdutor(){
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
+    const user_index = JSON.parse(localStorage.getItem("user-index"));
 
     if (JSON.parse(localStorage.getItem("users")) == null || JSON.parse(localStorage.getItem("users")) == undefined) {
         localStorage.setItem('users', JSON.stringify(users));
@@ -671,7 +663,6 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem('clientes', JSON.stringify(clientes));
 
     
-    //console.log(localStorage.getItem('produtores'));
 
     if (JSON.parse(localStorage.getItem("products")) == null || JSON.parse(localStorage.getItem("products")) == undefined) {
         localStorage.setItem('products', JSON.stringify(products));

@@ -40,7 +40,7 @@ function limparFiltros() {
     document.getElementById('filter-min-preco').value = '';
     document.getElementById('filter-max-preco').value = '';
     document.getElementById('campo-busca').value = '';
-    renderProducts(); // Renderiza todos os produtos
+    renderProducts();
 }
 
 function loadConstProducers() {
@@ -50,11 +50,9 @@ function loadConstProducers() {
 function loadProducers() {
     const selectElement = document.getElementById('filter-maker');
 
-    // Garante que a primeira opção padrão seja preservada
     selectElement.innerHTML = '<option value="">Todos os Fabricantes</option>';
 
     produtores = loadConstProducers();
-    // Adiciona cada produtor como uma opção no select
     produtores.forEach(produtor => {
         const option = document.createElement('option');
         option.value = produtor.name;
@@ -65,7 +63,7 @@ function loadProducers() {
 
 function renderProductsAtualizado(produtosFiltrados) {
     const listaProdutos = document.getElementById('product-list');
-    listaProdutos.innerHTML = ''; // Limpa os produtos existentes
+    listaProdutos.innerHTML = '';
 
     produtosFiltrados.forEach(product => {
         listaProdutos.innerHTML += `
@@ -109,10 +107,8 @@ function limparBusca() {
 }
 
 function clearCartItems() {
-    // Define o carrinho como um array vazio no localStorage
     localStorage.setItem('cart', JSON.stringify([]));
 
-    // Atualiza a interface principal do carrinho
     const cartList = document.querySelector('.list-group.mb-3');
     const cartCountElement = document.querySelector('.badge.bg-primary.rounded-pill');
 
@@ -127,10 +123,8 @@ function clearCartItems() {
     if (cartCountElement) {
         cartCountElement.textContent = '0';
     }
-
-    // Atualiza o modal do carrinho (se aplicável)
-    const modalCartItems = document.getElementById('cartItems'); // Ajuste o ID para o correto no seu modal
-    const modalCartTotal = document.getElementById('cartTotal'); // Ajuste o ID para o correto no seu modal
+    const modalCartItems = document.getElementById('cartItems');
+    const modalCartTotal = document.getElementById('cartTotal'); 
 
     if (modalCartItems) {
         modalCartItems.innerHTML = `
@@ -167,8 +161,8 @@ function filtrarProdutos() {
 
 function addToCart(productId) {
     console.log("addToCart chamada!");
-    console.log(productId); //debug
-    for (i = 0; i < indexs.length; i++) { //limpar item adcionado dos outros items
+    console.log(productId);
+    for (i = 0; i < indexs.length; i++) { 
         console.log(indexs[i]);
         if (indexs[i] == productId) {
             document.getElementById("product" + productId).classList.remove('d-none');
@@ -182,10 +176,8 @@ function addToCart(productId) {
     const cartItem = cart.find(item => item.id === productId);
         
     if (cartItem && product) {
-        // Se já existir, aumenta a quantidade
         cartItem.quantity += 1;
     } else {
-        // Caso contrário, adiciona ao carrinho com quantidade 1
         cart.push({ ...product, quantity: 1 });
     }
     updateCart();
@@ -197,7 +189,6 @@ function updateCart() {
     cartItems.innerHTML = '';
     let total = 0;
 
-    // Renderiza cada item no carrinho
     cart.forEach((item, index) => {
         total += item.price * item.quantity;
         cartItems.innerHTML += `
@@ -213,7 +204,7 @@ function updateCart() {
 
     cartTotal.textContent = `${total.toFixed(2)}€`;
     localStorage.setItem('cart', JSON.stringify(cart));
-    console.log("cart = ", cart); //debug
+    console.log("cart = ", cart);
 }
 function loadCart() {
     const savedCart = JSON.parse(localStorage.getItem('cart')); 
@@ -227,10 +218,8 @@ function loadCart() {
 }
 function decreaseQuantity(index) {
     if (cart[index].quantity > 1) {
-        // Reduz a quantidade se for maior que 1
         cart[index].quantity -= 1;
     } else {
-        // Remove o item se a quantidade for 1
         cart.splice(index, 1);
     }
     updateCart();
@@ -243,14 +232,13 @@ function removeFromCart(index) {
 
 function logout() {
     console.log("SAI");
-    localStorage.removeItem("user-index"); // Remove os dados do usuário
-    window.location.reload(); // Recarrega a página para atualizar a navbar
+    localStorage.removeItem("user-index");
+    window.location.reload();
 }
 
-// Inicializar produtos
 document.addEventListener("DOMContentLoaded", () => {
     renderProducts();
-    const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
+    const user_index = JSON.parse(localStorage.getItem("user-index")); 
     users = JSON.parse(localStorage.getItem("users"));
     
     if (user_index != null) {

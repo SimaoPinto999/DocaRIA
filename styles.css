@@ -5,7 +5,7 @@
     background-color: #d42e2e;
     color: white;
     font-size: 1rem;
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Suavidade */
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
     z-index: 1000;
 }
   .navbar-hidden {
@@ -24,16 +24,16 @@
   
   .hero {
     font-family: 'Pacifico';
-    background-image: url('images/foto6.jpg'); /* Substitua pelo caminho da sua imagem */
-    background-size: cover; /* Faz com que a imagem ocupe todo o espaço do div */
-    background-position: center; /* Centraliza a imagem */
-    height: 100vh; /* Define a altura do div para 100% da altura da janela */
-    display: flex; /* Ativa Flexbox */
-    flex-direction: column; /* Alinha os elementos em coluna (h1 e p) */
-    justify-content: center; /* Centraliza verticalmente */
-    align-items: center; /* Centraliza horizontalmente */
-    color: white; /* Torna o texto branco */
-    text-align: center; /* Centraliza o texto */
+    background-image: url('images/foto6.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    color: white;
+    text-align: center;
   }
 .product-card img {
     height: 150px;

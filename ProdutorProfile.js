@@ -27,8 +27,8 @@ function loadUserData() {
 
 function logout() {
     console.log("SAI");
-    localStorage.removeItem("user-index"); // Remove os dados do usuário
-    window.location.reload(); // Recarrega a página para atualizar a navbar
+    localStorage.removeItem("user-index");
+    window.location.reload();
 }
 
 function saveUserData() {
@@ -73,7 +73,6 @@ function saveDataToLocalStorage(base64Image) {
 }
 
 
-// Configurar os botões
 editBtn.addEventListener("click", (e) => {
     e.preventDefault();
     const isEditing = editBtn.innerText === "Salvar";
@@ -102,22 +101,21 @@ logoutBtn.addEventListener("click", (e) => {
 });
 
 function goToProdutorPage() {
-    const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
+    const user_index = JSON.parse(localStorage.getItem("user-index")); 
     const encodedName = encodeURIComponent(users[user_index].name);
     const pageUrl = `produtorDetails.html?id=${encodedName}`;
     window.location.href = pageUrl;
 }
 
 function goToProdutorProdutos() {
-    const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
+    const user_index = JSON.parse(localStorage.getItem("user-index"));
     const encodedName = encodeURIComponent(users[user_index].name);
     const pageUrl = `addProduto.html?id=${encodedName}`;
     window.location.href = pageUrl;
 }
 
-// Carregar dados do usuário ao iniciar
 document.addEventListener("DOMContentLoaded", () => {
-    const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
+    const user_index = JSON.parse(localStorage.getItem("user-index"));
     users = JSON.parse(localStorage.getItem("users"));
 
     if (user_index != null) {

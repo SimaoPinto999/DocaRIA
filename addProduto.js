@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Produtos = ", produtos);
 
 
-    const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
+    const user_index = JSON.parse(localStorage.getItem("user-index"));
     console.log(user_index);
     tempusers = JSON.parse(localStorage.getItem("users"));
     document.getElementById("banner").style.background = `linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('${tempusers[user_index].foto}') no-repeat center center/cover`;

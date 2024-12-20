@@ -26,11 +26,10 @@ function logout() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
+    const user_index = JSON.parse(localStorage.getItem("user-index"));
     users = JSON.parse(localStorage.getItem("users"));
 
     if (user_index != null) {
-        // Atualiza o navbar com a mensagem de boas-vindas
         document.getElementById("loginLI").classList.add("d-none");
         document.getElementById("userMenu").classList.remove("d-none");
         document.getElementById("logoNav").style.width = "260px";

@@ -12,8 +12,8 @@ function filtrarPedidosPedidos(nomeProdutor) {
 }
 function logout() {
     console.log("SAI");
-    localStorage.removeItem("user-index"); // Remove os dados do usuário
-    window.location.reload(); // Recarrega a página para atualizar a navbar
+    localStorage.removeItem("user-index");
+    window.location.reload();
 }
 
 function calcularQuantidadeTotal(pedido) {
@@ -24,7 +24,7 @@ function obterTodosOsProdutores(encomendas) {
     const produtores = encomendas.flatMap(encomenda =>
         encomenda.pedido.map(pedido => pedido.produtor)
     );
-    return [...new Set(produtores)]; // Remove duplicados
+    return [...new Set(produtores)];
 }
 
 function obterEncomendasPorProdutor(encomendas) {

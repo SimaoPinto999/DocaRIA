@@ -148,7 +148,6 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
 
         let base64ImageProdutor = "";
 
-        // Lê o arquivo de imagem se houver um
         if (file) {
             const reader = new FileReader();
             reader.onload = function (event) {

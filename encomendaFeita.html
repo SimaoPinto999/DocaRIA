@@ -81,13 +81,12 @@
         console.log("Cart = ", cart);
 
         function generateOrderId() {
-            const timestamp = Date.now(); // Número único baseado no tempo
-            //const randomNumber = Math.floor(Math.random() * 1000); Número aleatório para mais segurança
-            return `ORD-${timestamp}`; // Formato do ID
+            const timestamp = Date.now();
+            return `ORD-${timestamp}`;
         }
 
         function guardarPedido() {
-            const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
+            const user_index = JSON.parse(localStorage.getItem("user-index"));
             encomendas.push({
                 pedido: cart,
                 cliente: users[user_index].name,
@@ -99,14 +98,13 @@
             localStorage.removeItem('cart');
         }
             
-        // Gera e exibe o ID da encomenda
         const orderId = generateOrderId();
         document.getElementById("orderId").textContent = orderId;
         guardarPedido();
 
 
         document.addEventListener("DOMContentLoaded", () => {
-            const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
+            const user_index = JSON.parse(localStorage.getItem("user-index"));
             if (user_index != null) {
                 document.getElementById("loginLI").classList.add("d-none");
                 document.getElementById("userMenu").classList.remove("d-none");

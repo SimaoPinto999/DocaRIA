@@ -3,14 +3,14 @@ var users = JSON.parse(localStorage.getItem("users"));
 
 
 function goToProdutorPage() {
-    const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
+    const user_index = JSON.parse(localStorage.getItem("user-index"));
     const encodedName = encodeURIComponent(users[user_index].name);
     const pageUrl = `produtorDetails.html?id=${encodedName}`;
     window.location.href = pageUrl;
 }
 
 function goToProdutorProdutos() {
-    const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
+    const user_index = JSON.parse(localStorage.getItem("user-index"));
     const encodedName = encodeURIComponent(users[user_index].name);
     const pageUrl = `addProduto.html?id=${encodedName}`;
     window.location.href = pageUrl;
@@ -87,7 +87,7 @@ function loadGrafico() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
+    const user_index = JSON.parse(localStorage.getItem("user-index"));
     users = JSON.parse(localStorage.getItem("users"));
 
     if (user_index != null) {

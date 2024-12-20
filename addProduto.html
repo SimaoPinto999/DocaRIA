@@ -21,7 +21,7 @@
             padding-top: 50px;
         }
         iframe {
-            pointer-events: none; /* Impede interações com o iframe */
+            pointer-events: none;
         }
         .banner {
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('https://via.placeholder.com/1500x400') no-repeat center center/cover;
@@ -82,8 +82,6 @@
             <i class="fa fa-plus" aria-hidden="true"></i> Adicionar Produto
         </button>
     </div>
-
-    <!-- Modal para adicionar produto -->
     <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -114,8 +112,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal para editar produto -->
     <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

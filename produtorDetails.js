@@ -5,7 +5,6 @@ function getQueryParam(param) {
     return urlParams.get(param);
 }
 
-    // Carregar dados da loja
 function loadStoreDetails() {
     const storeName = getQueryParam("id");
     console.log(storeName);
@@ -27,15 +26,13 @@ function loadStoreDetails() {
     document.getElementById("store-description").innerText = store.descricao || "Sem descrição (ainda!)";
     document.getElementById("store-image").src = store.foto || "";
 
-    // Preencher a galeria de produtos
     const gallery = document.getElementById("product-gallery");
-    gallery.innerHTML = ""; // Limpar galeria
+    gallery.innerHTML = "";
 
     console.log("Produtos = ", products);
 
     products.forEach(product => {
         if (product.produtor == store.name) {
-            // Criar o div do produto
             const div = document.createElement("div");
             div.style.margin = "10px";
             div.style.border = "1px solid #ddd";
@@ -51,7 +48,6 @@ function loadStoreDetails() {
                 div.style.transform = "scale(1)";
             });
 
-            // Adicionar a imagem
             const img = document.createElement("img");
             img.src = product.image;
             img.alt = product.name;
@@ -61,13 +57,11 @@ function loadStoreDetails() {
             img.style.borderRadius = "5px";
             div.appendChild(img);
 
-            // Adicionar o nome do produto
             const productName = document.createElement("p");
             productName.textContent = product.name;
             productName.style.marginBottom = "10px";
             div.appendChild(productName);
 
-            // Adicionar o botão
             const button = document.createElement("button");
             button.textContent = 'Ver Produto ';
             button.className = "btn btn-primary btn-sm";
@@ -77,7 +71,7 @@ function loadStoreDetails() {
                 window.location.href = "produtos.html";
             };
             const icon = document.createElement("i");
-            icon.classList.add("fa", "fa-external-link"); // Ícone de link externo
+            icon.classList.add("fa", "fa-external-link");
             icon.setAttribute("aria-hidden", "true");
             button.appendChild(icon);
             div.appendChild(button);
@@ -87,9 +81,8 @@ function loadStoreDetails() {
     });
 }
 
-// Carregar os detalhes ao iniciar
 document.addEventListener("DOMContentLoaded", () => {
-    const user_index = JSON.parse(localStorage.getItem("user-index")); // Recupera o usuário do localStorage
+    const user_index = JSON.parse(localStorage.getItem("user-index"));
     console.log("Users = ", users);
 
     if (user_index != null) {
