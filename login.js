@@ -214,7 +214,7 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
                 };
                 console.log("Registrando produtor:", novo_user);
 
-                var users = JSON.parse(localStorage.getItem('users'));
+                let users = JSON.parse(localStorage.getItem('users'));
                 users.push(novo_user);
                 localStorage.setItem('users', JSON.stringify(users));
                 console.log("Users Atualizado = ", JSON.parse(localStorage.getItem('users')));
