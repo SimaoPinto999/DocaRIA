@@ -197,10 +197,6 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
                 showError('registerprodutorPasswordError', false);
             }
 
-            if (produtorDescricao == null || produtorDescricao == "") {
-                produtorDescricao = "Sem informação.";
-            }
-
             if (!hasError) {
                 novo_user = {
                     tipo: userType,
